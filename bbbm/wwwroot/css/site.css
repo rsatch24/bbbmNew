@@ -1,0 +1,351 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/elements/button.sass";
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #2E5090;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+    border-top: 1px solid #2E5090;
+}
+.border-bottom {
+    border-bottom: 1px solid #2E5090;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+.footer {
+    background-color: #efefef;
+    margin-top: auto;
+    /*height: 12em;*/
+}
+
+.footer-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12em;
+    color: #2E5090;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.topNavMenu{
+    flex: 1;
+    flex-basis: 50% !important;
+    justify-content:center;
+}
+
+.name-header {
+   
+    text-align: center;
+}
+
+h4, .nav-link {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+/*    color: white !important;*/
+    color: #2E5090 !important;
+}
+
+.footer-text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    /*    color: white !important;*/
+    color: #2E5090 !important;
+    font-size: 14px;
+}
+
+
+@media (max-width: 1100px){
+    .name-header > h3 {
+        font-size: 20px;
+    }
+    .name-header > h5 {
+        font-size: 16px;
+    }
+}
+
+.wrapper {
+    padding-bottom: 90px;
+}
+
+.divider {
+    position: relative;
+    /*margin-top: 90px;*/
+    height: 1px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.div-transparent:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    /*left: 5%;
+    right: 5%;*/
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, rgb(46, 80, 144), transparent);
+}
+
+.div-arrow-down:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: -7px;
+    left: calc(50% - 7px);
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    background-color: white;
+    border-bottom: 1px solid rgb(46, 80, 144);
+    border-right: 1px solid rgb(46, 80, 144);
+}
+
+
+.navbar {
+/*    background-color: rgba(52, 58, 64, 0.9) !important;*/
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.header-color {
+    color: #575757;
+    font-family: 'EB Garamond', serif;
+}
+
+.btn-xl {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-color: #2E5090 !important;
+    color: white !important;
+    background-color: #2E5090 !important;
+}
+
+.content-row-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    /*align-items: center;*/
+}
+
+.col-flex {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /*align-content: start;*/
+    flex-wrap: nowrap;
+    min-width: 350px;
+    margin-bottom: 5%;
+    flex-basis: 50%;
+   
+}
+
+.feature-header {
+    width: 100%;
+}
+
+
+.row-no-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.col-img-flex {
+    flex: 1;
+    width: 50%;
+    min-width: 250px; 
+    margin-bottom: 1em;
+}
+
+.abt-img {
+    max-width: 100%;
+    min-width: 40%;
+}
+.row-vertical {
+    display: flex;
+    flex-direction: column;
+  /*  align-items: stretch;*/
+    justify-content: space-between;
+}
+
+.simp-flex {
+    flex: 1;
+}
+
+.para-text {
+    font-size: 16px;
+    font-family: 'Roboto', arial, sans-serif;
+}
+
+.home-container, .about-container, .contact-container, .integrative-nutrition-container, .faq-container, .container-row-integrative, .about-2-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    /*    margin-left: 5%;
+    margin-right: 5%;*/
+}
+
+.about-container, .contact-container, .faq-container {
+    padding-top: 50px;
+    padding-bottom: 75px; 
+}
+
+.container-fluid {
+    padding: 0 !important;
+}
+
+.home-container-full {
+    width: 100%;
+}
+
+.home-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.container-row {
+    margin-top: 13%;
+    margin-bottom: 6.5%;
+    background-color: #eceff1;
+}
+
+.container-row-about {
+    margin-bottom: 5%;
+    background-color: #eceff1;
+}
+
+#home-container-id > .div-arrow-down:after {
+    background-color: #eceff1 !important;
+}
+#about-container-id > .div-arrow-down:after {
+    background-color: #eceff1 !important;
+}
+
+.welcome-text, .contact-form {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.home-image-div {
+    background: black url(../content/snow-mountains_background.png) no-repeat scroll top;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .home-image-div {
+        height: 350px;
+        min-height: 350px;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .home-image-div {
+         height: 300px;
+         min-height: 300px;
+        width: 100%;
+    }
+
+/*    .apts-loc-ul {
+        text-align: left !important;
+    }*/
+}
+
+@media only screen and (max-width: 375px) {
+    .home-image-div {
+        min-height: 200px;
+        width: 100%;
+    }
+}
+/*@media only screen and (max-width: 400px) {
+    .content-row-flex {*/
+/*    }*/
+/*}*/
+
+.custom-button {
+    border-color: #2E5090 !important;
+    color: #2E5090 !important;
+}
+.custom-button:hover, .custom-button:active, .custom-button:visited {
+    background-color: #2E5090 !important;
+    color: white !important;
+}
+
+.thank-you-card {
+    max-height: 80%; 
+    margin-left: 10%; 
+    margin-right:10%; 
+    border: 1px solid #575757;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "bbbm",
+  "version": "1.0.0",
+  "description": "bbbm package",
+  "main": "index.js",
+  "dependencies": {
+    "bulma": "^0.9.1",
+    "bulma-start": "0.0.4",
+    "sass": "^1.27.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "alpha"
+  },
+  "author": "Ryan Satchell",
+  "license": "ISC"
+}

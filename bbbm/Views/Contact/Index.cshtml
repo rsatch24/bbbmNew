@@ -1,0 +1,107 @@
+﻿@model ContactModel
+@using bbbm.DataModels;
+@using bbbm.Entities;
+
+
+@{
+    var displayCaptchaErr = !(bool)ViewData["initialPageLoad"] && !(bool)ViewData["IsValidCaptcha"];
+}
+
+
+@if ((bool)ViewData["success"])
+{
+<div class="contact-container">
+    <div class="card box-shadow text-center mt-lg-5 thank-you-card">
+        <h3 class="mt-5 mr-2 ml-2" style="color: #575757"> Thank you for Contacting Me. I will be speaking with you shortly.</h3>
+        <div class="mt-5 mb-5">
+            <a class="btn btn-outline-secondary" href="/Home/Index"> Home </a>
+        </div>
+    </div>
+</div>
+}
+
+        else
+        {
+<div class="contact-container">
+    <div class="text-center header-color"> <h3>Contact</h3></div>
+    <div class="divider div-transparent div-arrow-down mb-5"></div>
+    <form class="contact-form" method="post" action=@Url.Action("SaveContact", "Contact")>
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-group text-center">
+            <input type="text" class="form-control" title="remove special characters or numbers" name="nameInput" id="nameInput" aria-describedby="nameHelp" placeholder="Enter Name" required pattern="[A-Z\sa-z]+">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="EmailInput" name="EmailInput" placeholder="Enter E-mail" required>
+        </div>
+        <label> Interest: </label>
+        <hr class="solid mt-0" />
+
+        @foreach (Reasons r in Model.Reasons)
+        {
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="reason_@r.ReasonID" name="reason_@r.ReasonID" required>
+            <label class="form-check-label" for="reason_@r.ReasonID">@r.reason</label>
+        </div>
+        }
+        @*<div class="form-check">
+                <input type="checkbox" class="form-check-input" id="reason_1" name="reason_1" required>
+                <label class="form-check-label" for="reason_1">Nutrition - Initial Consultation</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="reason_2" name="reason_2" required>
+                <label class="form-check-label" for="reason_2">Nutrition - Follow-up Consultation</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="reason_3" name="reason_3" required>
+                <label class="form-check-label" for="reason_3">Consultant Services</label>
+            </div>*@
+
+        <br />
+        <hr class="solid mt-0" />
+        <div class="form-group mb-2">
+            <textarea class="form-control" id="message" name="message" rows="3" placeholder="Message" required maxlength="350"></textarea>
+        </div>
+        @*<div class="g-recaptcha" data-sitekey="@RecaptchaSettings.recapthcaSiteKey"></div>
+                    @if (displayCaptchaErr)
+            {
+                    <span class="text text-danger"> Invalid Recaptcha! </span>
+                    <br>
+            }*@
+        <br />
+        <div class="text-center">
+            <button type="submit" onclick="clearRequiredCheckBoxes(this)" class="btn btn-xl rounded-pill btn-outline-primary">   Send   </button>
+        </div>
+    </form>
+</div>
+
+        }
+
+<script type="text/javascript">
+
+    function clearRequiredCheckBoxes() {
+        var ok = document.querySelectorAll('input[type=checkbox]');
+        var required = true;
+        for (var i = 0; i < ok.length; i++) {
+            if (ok[i].checked) {
+                required = false;
+                ok[i].setCustomValidity('');
+            }
+        }
+
+        if (!required) {
+            for (var i = 0; i < ok.length; i++) {
+                ok[i].required = false;
+                ok[i].setCustomValidity('');
+            }
+        }
+        else {
+            for (var i = 0; i < ok.length; i++) {
+                ok[i].required = true;
+                ok[i].setCustomValidity('Select atleast one reason');
+            }
+        }
+    }
+
+</script>
