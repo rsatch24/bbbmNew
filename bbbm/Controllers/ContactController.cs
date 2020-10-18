@@ -9,6 +9,7 @@ using bbbm.Entities;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace bbbm.Controllers
 {
@@ -16,14 +17,19 @@ namespace bbbm.Controllers
     {
         private readonly IContactRepository _contactRepository;
         private readonly IEMailer _emailer;
-        public ContactController(IContactRepository contactRepository, IEMailer mailer)
+        private readonly string _recaptchaSecretKey;
+        private readonly string _recaptchaSiteKey;
+        public ContactController(IContactRepository contactRepository, IEMailer mailer, IConfiguration config)
         {
             _contactRepository = contactRepository;
             _emailer = mailer;
+            _recaptchaSecretKey = config.GetSection("recaptchaSecretKey").Value;
+            _recaptchaSiteKey = config.GetSection("recaptchaSiteKey").Value;
         }
         public IActionResult Index(ContactModel contactModel)
         {
             contactModel.Reasons = _contactRepository.GetReasons().Result;
+            contactModel.recapthcaSiteKey = _recaptchaSiteKey;
             ViewData.Add("success", false);
             ViewData.Add("IsValidCaptcha", false);
             ViewData.Add("initialPageLoad", true);
@@ -36,12 +42,13 @@ namespace bbbm.Controllers
         {
             ContactModel cm = new ContactModel();
             cm.Reasons = _contactRepository.GetReasons().Result;
+            cm.recapthcaSiteKey = _recaptchaSiteKey;
 
             try
             {
                 /*TURN ON WHEN REAL DEPLOYMENT*/
-                //bool verifyRecaptcha = IsRecaptchaVerified(form);
-                bool verifyRecaptcha = true;
+                bool verifyRecaptcha = IsRecaptchaVerified(form);
+               // bool verifyRecaptcha = true;
                 if (verifyRecaptcha)
                 {
                     Contact c = new Contact()
@@ -124,12 +131,13 @@ namespace bbbm.Controllers
         private bool IsRecaptchaVerified(IFormCollection form)
         {
             const string urlToPost = "https://www.google.com/recaptcha/api/siteverify";
-            const string secretKey = RecaptchaSettings.recaptchaSecretKey;
+            
+            //const string secretKey = _recaptchaSecretKey;
             var captchaResponse = form["g-recaptcha-response"];
 
             if (string.IsNullOrWhiteSpace(captchaResponse)) return false;
 
-            var validateResult = ValidateFromGoogle(urlToPost, secretKey, captchaResponse);
+            var validateResult = ValidateFromGoogle(urlToPost, _recaptchaSecretKey, captchaResponse);
             return validateResult.Success ? true : false;
         }
         internal class ReCaptchaResponse

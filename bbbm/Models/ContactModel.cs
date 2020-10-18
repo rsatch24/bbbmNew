@@ -14,5 +14,7 @@ namespace bbbm.Models
 
         public string Message { get; set; }
         public List<Reasons> Reasons { get; set; }
+
+        public string recapthcaSiteKey { get; set; }
     }
 }
