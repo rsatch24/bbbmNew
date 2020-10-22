@@ -30,7 +30,7 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
@@ -240,16 +240,16 @@ h4, .nav-link {
     font-family: 'Roboto', arial, sans-serif;
 }
 
-.home-container, .about-container, .contact-container, .integrative-nutrition-container, .faq-container, .container-row-integrative, .about-2-container {
+.home-container, .about-container, .contact-container, .integrative-nutrition-container, .faq-container, .container-row-integrative, .corp-eng-container, .about-2-container {
     max-width: 1500px;
     margin: 0 auto;
     /*    margin-left: 5%;
     margin-right: 5%;*/
 }
 
-.about-container, .contact-container, .faq-container {
+.about-container, .contact-container, .faq-container, .corp-eng-container {
     padding-top: 50px;
-    padding-bottom: 75px; 
+    padding-bottom: 75px;
 }
 
 .container-fluid {
@@ -318,9 +318,9 @@ h4, .nav-link {
         width: 100%;
     }
 
-/*    .apts-loc-ul {
-        text-align: left !important;
-    }*/
+    .corp-flex-col {
+        justify-content:left !important;
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -348,4 +348,9 @@ h4, .nav-link {
     margin-left: 10%; 
     margin-right:10%; 
     border: 1px solid #575757;
+}
+
+
+#int-nut-id{
+    cursor: pointer;
 }

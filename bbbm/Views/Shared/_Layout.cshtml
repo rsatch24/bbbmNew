@@ -1,9 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+@using Microsoft.AspNetCore.Http.Extensions
 
 @{
     Random r = new Random();
     int cssGen = r.Next();
+
+    string path = Context.Request.Path.Value;
+    string integrativeLink = "/Home/Index#integrative-nutrition";
+
+    //check if path not on home/index or /, display href for integrative nutrition based on that. 
+    if (path.Length < 2) { integrativeLink = "#integrative-nutrition"; }
+
+    //var s = path;
+    //var curURL = Path.
+    //var c = curURL;
 
 }
 <head>
@@ -31,6 +42,10 @@
 
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="int-nut-id" >Integrative Nutrition</a>
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
@@ -63,11 +78,30 @@
             </div>
             <span>  &copy; 2020 - bbbmNutrition </span>
         </div>
-        
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+
+        $('#int-nut-id').click(function () {
+
+            if ("@integrativeLink" == "#integrative-nutrition") {
+                $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
+            }
+            else {
+                window.location = "@integrativeLink";
+            }
+        });
+
+        $(document).ready(function () {
+            if (location.hash == "#integrative-nutrition") {
+                $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
+            }
+        });
+
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

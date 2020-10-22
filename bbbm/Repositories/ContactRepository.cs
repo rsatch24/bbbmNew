@@ -27,7 +27,7 @@ namespace bbbm.Repositories
 
         public async Task<List<Reasons>> GetReasons()
         {
-            string query = "SELECT * FROM db_a68f92_bbbmnut.Reasons";
+            string query = "SELECT * FROM Reasons";
              var ok =  await _dataAccessor.GetData<Reasons>(_connString, query, null);
             return ok.ToList();
         }

@@ -115,7 +115,7 @@ namespace bbbm.Controllers
                 string stringToAdd = "";
                 if (c == (int)DB_Reasons.Initial) { stringToAdd = "Nutrition - Initial Consultation"; }
                 if (c == (int)DB_Reasons.FollowUp) { stringToAdd = "Nutrition - Follow-up Consultation"; }
-                if (c == (int)DB_Reasons.Consultation) { stringToAdd = "Consultant Services"; }
+                if (c == (int)DB_Reasons.Consultation) { stringToAdd = "Functional Nutrition Consulting"; }
                 concatReasons += $"{stringToAdd} <br />";
             }
 
