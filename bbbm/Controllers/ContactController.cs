@@ -47,8 +47,8 @@ namespace bbbm.Controllers
             try
             {
                 /*TURN ON WHEN REAL DEPLOYMENT*/
-                //bool verifyRecaptcha = IsRecaptchaVerified(form);
-                bool verifyRecaptcha = true;
+                bool verifyRecaptcha = IsRecaptchaVerified(form);
+                //bool verifyRecaptcha = true;
                 if (verifyRecaptcha)
                 {
                     Contact c = new Contact()
