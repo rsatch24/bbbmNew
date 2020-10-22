@@ -44,8 +44,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="int-nut-id" >Integrative Nutrition</a>
-
+                            <a class="nav-link int-nut-id">Integrative Nutrition</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
@@ -71,6 +70,8 @@
                 <span class="pr-2 footer-text">|</span>
                 <a class="pr-2 footer-text" asp-controller="Home" asp-action="Index"> HOME </a>
                 <span class="pr-2 footer-text">|</span>
+                <a class="pr-2 footer-text int-nut-id"> INTEGRATIVE NUTRITION </a>
+                <span class="pr-2 footer-text">|</span>
                 <a class="pr-2 footer-text" asp-controller="Home" asp-action="About"> ABOUT </a>
                 <span class="pr-2 footer-text">|</span>
                 <a class="pr-2 footer-text" asp-controller="Contact" asp-action="Index"> CONTACT </a>
@@ -85,7 +86,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript">
 
-        $('#int-nut-id').click(function () {
+        $('.int-nut-id').click(function () {
 
             if ("@integrativeLink" == "#integrative-nutrition") {
                 $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
