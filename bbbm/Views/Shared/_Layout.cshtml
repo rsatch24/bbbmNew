@@ -26,13 +26,17 @@
     <link rel="stylesheet" href="~/css/site.css?v=@cssGen.ToString()" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @* <script src="~/TextEditorContent/jquery-te-1.4.0.min.js"></script>*@
+    <script src="~/TextEditorContent/jquery-te-1.4.0.min.js"></script>
+    <link href="~/TextEditorContent/jquery-te-1.4.0.css" rel="stylesheet" />
 </head>
 <body>
     <header>
         <div class="@bgImgClass">
             <div class="position-absolute text-center" style="z-index:1029;">
-                <h1 class="header-title" >BALANCED BODIES BALANCED MINDS </h1>
-                <h6 class="header-sub-title" >Joshua Nachman, MS, CNS</h6>
+                <h1 class="header-title">BALANCED BODIES BALANCED MINDS </h1>
+                <h6 class="header-sub-title">Joshua Nachman, MS, CNS</h6>
             </div>
         </div>
         <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-light box-shadow fixed-top pr-lg-5 pl-lg-5">
@@ -54,8 +58,8 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="IntegrativeNutrition">Integrative Nutrition</a>
                         </li>
                         @*<li class="nav-item">
-                            <a class="nav-link int-nut-id">Integrative Nutrition</a>
-                        </li>*@
+                                <a class="nav-link int-nut-id">Integrative Nutrition</a>
+                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
@@ -69,6 +73,7 @@
 
     </header>
     <div class="container-fluid">
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -102,29 +107,32 @@
         </div>
 
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   @* <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
+
+
     @*<script type="text/javascript">
 
-        $('.int-nut-id').click(function () {
+            $('.int-nut-id').click(function () {
 
-            if ("@integrativeLink" == "#integrative-nutrition") {
-                $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
-                    $('.navbar-collapse').collapse('hide');
-            }
-            else {
-                window.location = "@integrativeLink";
-            }
-        });
+                if ("@integrativeLink" == "#integrative-nutrition") {
+                    $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
+                        $('.navbar-collapse').collapse('hide');
+                }
+                else {
+                    window.location = "@integrativeLink";
+                }
+            });
 
-        $(document).ready(function () {
-            if (location.hash == "#integrative-nutrition") {
-                $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
-            }
-        });
+            $(document).ready(function () {
+                if (location.hash == "#integrative-nutrition") {
+                    $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
+                }
+            });
 
-    </script>*@
+        </script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -29,8 +29,11 @@ namespace bbbm
             services.AddControllersWithViews();
             services.AddSingleton<IContactRepository, ContactRepository>();
             services.AddSingleton<IDataAccessor, DataAccessor>();
+            services.AddSingleton<IAdminRepository, AdminRepository>();
             services.Configure<SmtpSettings>(Configuration.GetSection("SmtpSettings"));
             services.AddSingleton<IEMailer, EMailer>();
+
+           // services.AddAuthentication("dbAuth").
 
         }
 

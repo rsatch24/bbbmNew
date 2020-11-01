@@ -1,0 +1,37 @@
+﻿
+    <div class="admin-container">
+        <h3> Admin Stuff</h3>
+        <textarea id="testEditor" name="testEditor"> </textarea>
+
+        <button onclick="saveChanges()">Update Section </button>
+    </div>
+
+@{
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#testEditor").jqte();
+    });
+
+    function saveChanges() {
+        var EditedText = { SectionID: 1, PageID: 1, SectionContent: $("#testEditor").val() }
+        debugger;
+        $.ajax({
+            type: "Post", 
+            dataType: "json", 
+            url: "/Admin/saveContentToDB",
+            traditional: true, 
+            data: JSON.stringify(EditedText), 
+            contentType: "application/json;charset=utf-8", 
+            success: function (data) {
+                alert("Saved!");
+            }, 
+            error: function (xhr, status, error) {
+                alert(error);
+            }
+        })
+
+    }
+
+</script>

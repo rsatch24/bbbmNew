@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="TextEditorContent\" />
     <Folder Include="wwwroot\content\" />
   </ItemGroup>
 
