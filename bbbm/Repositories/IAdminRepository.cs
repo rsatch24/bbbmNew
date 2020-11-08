@@ -9,5 +9,7 @@ namespace bbbm.Repositories
         Task<List<PageSection>> GetSectionByPageID(IDictionary<string, object> Params);
 
         Task UpdateSectionContent(IDictionary<string, object> Params);
+
+        public List<Page> GetPages();
     }
 }

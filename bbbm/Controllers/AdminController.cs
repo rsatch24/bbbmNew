@@ -8,6 +8,7 @@ using bbbm.DataModels;
 using bbbm.Models;
 using System.Text.Json;
 using bbbm.Repositories;
+using bbbm.Enums;
 
 namespace bbbm.Controllers
 {
@@ -15,14 +16,41 @@ namespace bbbm.Controllers
     {
 
         private readonly IAdminRepository _adminRepo;
+        private readonly List<Page> _pages;
         public AdminController(IAdminRepository adminRepo)
         {
             _adminRepo = adminRepo;
+            _pages = _adminRepo.GetPages();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? PageID)
         {
-            return View();
+            AdminModel am = fillAdminModel(PageID);
+            return View(am);
+        }
+
+        private AdminModel fillAdminModel(int? PageID)
+        {
+            AdminModel am = new AdminModel();
+            if (!PageID.HasValue || PageID == (int?)PageEnums.Home)
+            {
+                am.PageID = (int)PageEnums.Home;
+                am.PageName = PageEnums.Home.ToString();
+                am.URL = "/";
+                Dictionary<string, object> paramVals = new Dictionary<string, object>();
+                paramVals.Add("PageID", am.PageID);
+                am.pageSections = _adminRepo.GetSectionByPageID(paramVals).Result;
+                return am;
+            }
+            else {
+                am.PageID = (int)PageID;
+                am.PageName = _pages.Where(w => w.PageID == (int)PageID).Select(s => s.PageName).FirstOrDefault();
+                Dictionary<string, object> paramVals = new Dictionary<string, object>();
+                paramVals.Add("PageID", am.PageID);
+                am.pageSections = _adminRepo.GetSectionByPageID(paramVals).Result;
+                return am;
+            }
+           
         }
 
         [HttpPost]

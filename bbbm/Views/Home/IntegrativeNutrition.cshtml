@@ -1,24 +1,30 @@
-﻿<div id="integrative-nutrition" class="container-row-integrative">
+﻿@model IntNutritionPageModel
+@using bbbm.Enums
+
+<div id="integrative-nutrition" class="container-row-integrative">
     <div class="integrative-container mb-5">
-        <div class="text-center header-color"> <h3>Integrative Nutrition </h3></div>
+        <div class="nutrition-title"> @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.nutrition_title].SectionContent) </div>
         <div id="integrative-container-id">
             <div class="divider div-transparent div-arrow-down"></div>
         </div>
         <div class="mt-5 text-center mb-5" style="margin-left: 10%; margin-right: 10%;">
-            <span class="font-italic"> As an Integrative Nutritionist, I use Food as Medicine alongside targeted nutraceutical and herbal therapies and lab testing as needed for both an adult and pediatric population.</span>
+            @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.sub_header].SectionContent)
+            @*<span class="font-italic"> As an Integrative Nutritionist, I use Food as Medicine alongside targeted nutraceutical and herbal therapies and lab testing as needed for both an adult and pediatric population.</span>
             <br />
             <br />
-            <span> <a href="/Home/CorporateEngagement"> Corporate Engagement Information </a></span>
+            <span> <a href="/Home/CorporateEngagement"> Corporate Engagement Information </a></span>*@
         </div>
         <div class="content-row-flex">
             <div class="col-flex">
                 <img src="~/content/wholefoods.jpg" width="275" height="183" />
             </div>
 
-            <div class="col-flex" style="color:#575757">
+            <div class="col-flex">
 
                 <div class="row-noflex">
-                    <h3 class="text-center" style="font-size: 20px;">Areas of Specialty</h3>
+                    @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.top_right].SectionContent)
+
+                    @*<h3 class="text-center" style="font-size: 20px;">Areas of Specialty</h3>
                     <div>
                         <ul>
                             <li>
@@ -34,13 +40,15 @@
                                 Chronic Symptoms of Unknown Origin
                             </li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
             </div>
 
             <div class="col-flex">
                 <div class="row-noflex">
-                    <h3 class="text-center" style="font-size: 20px;">Appointments Times & Locations</h3>
+                    @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.bottom_left].SectionContent)
+
+                    @*<h3 class="text-center" style="font-size: 20px;">Appointments Times & Locations</h3>
                     <div class="text-center apts-loc-ul">
                         <ul class="pl-0" style="list-style-type: none;">
                             <li class="pr-4" style="margin-bottom: 2em;">
@@ -58,17 +66,18 @@
                             </li>
                         </ul>
 
-                    </div>
-                    <div class="int-nut-faq-display">
+                    </div>*@
+                    @*<div class="int-nut-faq-display">
                         <h3 class="text-center" style="font-size: 20px;"><a href="/Home/FAQ"> Frequently Asked Questions </a></h3>
-                    </div>
+                    </div>*@
                 </div>
 
             </div>
 
             <div class="col-flex">
                 <div class="row-noflex">
-                    <h3 class="text-center" style="font-size: 20px;">Scheduling</h3>
+                    @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.bottom_right].SectionContent)
+                    @*<h3 class="text-center" style="font-size: 20px;">Scheduling</h3>
                     <div class="text-center">
                         <ul class="pl-0" style="list-style-type: none;">
                             <li>
@@ -103,13 +112,13 @@
                             </li>
                         </ul>
 
-                    </div>
+                    </div>*@
 
                 </div>
 
             </div>
 
-            <div class="col-flex int-nut-faq-hidden">
+            <div class="col-flex">
                 <div class="row-noflex">
                     <h3 class="text-center" style="font-size: 20px;"><a href="/Home/FAQ"> Frequently Asked Questions </a></h3>
                 </div>

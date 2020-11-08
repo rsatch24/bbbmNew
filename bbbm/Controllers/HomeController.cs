@@ -61,7 +61,21 @@ namespace bbbm.Controllers
         }
         public IActionResult IntegrativeNutrition()
         {
-            return View();
+            IntNutritionPageModel np = FillNutritionPageModel();
+            return View(np);
+        }
+
+        private IntNutritionPageModel FillNutritionPageModel()
+        {
+            IntNutritionPageModel np = new IntNutritionPageModel();
+            np.PageID = (int)PageEnums.IntegrativeNutrition;
+            np.PageName = PageEnums.IntegrativeNutrition.ToString();
+            np.URL = "/IntegrativeNutrition";
+            Dictionary<string, object> paramVals = new Dictionary<string, object>();
+            paramVals.Add("PageID", np.PageID);
+            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+
+            return np;
         }
 
 

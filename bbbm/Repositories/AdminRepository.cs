@@ -53,5 +53,12 @@ namespace bbbm.Repositories
             await _dataAccessor.SaveDataAsync(_connString, query, dynamicParameters);
         }
 
+        public List<Page> GetPages()
+        {
+            string query = "SELECT * FROM Pages";
+            var ok =  _dataAccessor.GetQuickData<Page>(_connString, query, null);
+            return ok.ToList();
+        }
+
     }
 }

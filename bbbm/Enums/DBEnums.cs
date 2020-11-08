@@ -15,4 +15,21 @@ namespace bbbm.Enums
        FAQ
     }
 
+    public enum Home_Section_Enums
+    {
+        contact_button, 
+        welcome_title, 
+        welcome_text
+    }
+
+    public enum Nutrition_Section_Enums
+    {
+        nutrition_title, 
+        sub_header, 
+        top_left, 
+        top_right, 
+        bottom_left, 
+        bottom_right
+    }
+
 }
