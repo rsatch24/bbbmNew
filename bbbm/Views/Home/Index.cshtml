@@ -8,34 +8,48 @@
 
 <div class="home-container-full">
     <div class="row home-btn-container pt-2">
-        <button class="btn btn-xl rounded-pill btn-outline-primary" onclick="window.location.href='/Contact/Index'"> @Html.Raw(Model.pageSections[0].SectionContent)  </button>
+        <button class="btn btn-xl rounded-pill btn-outline-primary" onclick="window.location.href='/Contact/Index'"> Schedule </button>
     </div>
     <div class="row justify-content-center container-row pt-2">
+           
         <div class="home-container">
             <div id="home-container-id" style="width: 100%;">
-                <div class="header-color text-center">  @Html.Raw(Model.pageSections[1].SectionContent) </div>
+                <div class="header-color text-center"> <h3> Welcome </h3> </div>
                 <div class="divider div-transparent div-arrow-down mb-5"></div>
             </div>
-            <div class="text-center welcome-text">
-                @Html.Raw(Model.pageSections[2].SectionContent)
-                <p class="mb-3 para-text">
-                    In 2009 I was diagnosed with Crohn’s Disease: an autoimmune condition. By October, 2011 I had found my personal cure. Along the way my entire life changed. By 2014 I had left my Physics PhD track and completed my Master’s in Nutrition. I went through The Four Winds Lightbody Healing Program and along the way found myself starting studies with indigenous healers. You can read more about my journey if you’d like to know more about the path I took to healing.
-                </p>
-                <p class="mb-3 para-text">
-                    To me, being a guide means accepting the responsibility of taking you as far along your healing path as I can. My goal is to get you well quickly and efficiently. Insofar I have guided 100’s of people to health and wellness.
-                </p>
-                <p class="mb-3 para-text">
-                    As a guide I work to merge established with cutting edge science while sourcing from the ancient traditions. We craft an explanatory model large enough to encompass all of your present state in all of its simplicity or complexity while providing a clear, grounded path towards healing.
-                </p>
-                <p class="mb-3 para-text">
-                    To work with me you can submit an interest form found
-                </p>
-                <p class="mb-3 para-text">
-                    <a href="../Contact/Index">here</a>
-                </p>
+            <div class="content-row-flex">
+                <div class="col-flex">
+                    <img src="~/content/welcome-image.jpeg" width="350" height="500" />
+                </div>
+                <div class="col-flex">
+                    <div class="row-no-flex text-center">
+                        <p class="mb-3 para-text">
+                            In 2009 I was diagnosed with Crohn’s Disease: an autoimmune condition. By October, 2011 I had found my personal cure. Along the way my entire life changed. By 2014 I had left my Physics PhD track and completed my Master’s in Nutrition. I went through The Four Winds Lightbody Healing Program and along the way found myself starting studies with indigenous healers. You can read more about my journey if you’d like to know more about the path I took to healing.
+                        </p>
+                        <p class="mb-3 para-text">
+                            To me, being a guide means accepting the responsibility of taking you as far along your healing path as I can. My goal is to get you well quickly and efficiently. Insofar I have guided 100’s of people to health and wellness.
+                        </p>
+                        <p class="mb-3 para-text">
+                            As a guide I work to merge established with cutting edge science while sourcing from the ancient traditions. We craft an explanatory model large enough to encompass all of your present state in all of its simplicity or complexity while providing a clear, grounded path towards healing.
+                        </p>
+                        <p class="mb-3 para-text">
+                            To work with me you can submit an interest form found
+                        </p>
+                        <p class="mb-3 para-text">
+                            <a href="../Contact/Index">here</a>
+                        </p>
+                    </div>
+                </div>
             </div>
-
         </div>
 
     </div>
 </div>
+
+
+<script type="text/javascript">
+      $(window).scroll(function(){
+        $('nav').toggleClass('scrolled', $(this).scrollTop() > 100);
+        $('.nav-link').toggleClass('scrolled', $(this).scrollTop() > 100);
+    });
+</script>
