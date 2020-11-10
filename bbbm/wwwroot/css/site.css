@@ -282,6 +282,11 @@ h4, .nav-link {
     padding-bottom: 50px;
 }
 
+.faq-container {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .container-fluid {
     padding: 0 !important;
 }
