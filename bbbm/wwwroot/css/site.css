@@ -251,12 +251,12 @@ h4, .nav-link {
     font-family: 'Roboto', arial, sans-serif;
 }
 
-.home-container, .home-container-full, .about-container, .contact-container, .integrative-nutrition-container, .faq-container, .container-row-integrative, .corp-eng-container, .about-2-container {
+.home-container, .home-container-full, .about-container, .contact-container,.login-container, .integrative-nutrition-container, .faq-container, .container-row-integrative, .corp-eng-container, .about-2-container {
     max-width: 1500px;
     margin: 0 auto;
 }
 
-.about-container, .contact-container, .faq-container, .corp-eng-container, .container-row-integrative {
+.about-container, .contact-container, .faq-container, .corp-eng-container, .container-row-integrative, .login-container {
     padding-top: 100px;
     padding-bottom: 50px;
 }
@@ -459,4 +459,13 @@ h4, .nav-link {
 #page-list a {
     color: white !important;
     font-size: 1em;
+}
+
+.login-form {
+    max-width: 350px;
+}
+
+.login-container {
+   flex-direction: column;
+
 }

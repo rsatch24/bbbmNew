@@ -11,5 +11,6 @@ namespace bbbm.Repositories
         Task UpdateSectionContent(IDictionary<string, object> Params);
 
         public List<Page> GetPages();
+        public Task<User> GetUser(IDictionary<string, object> queryParams);
     }
 }

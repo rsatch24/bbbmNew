@@ -60,5 +60,17 @@ namespace bbbm.Repositories
             return ok.ToList();
         }
 
+        public async Task<User> GetUser(IDictionary<string, object> queryParams)
+        {
+            string query = "SELECT * FROM Users Where RoleName = @RoleName AND UserName = @UserName AND PassWord = @PassWord";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            foreach (KeyValuePair<string, object> kp in queryParams)
+            {
+                dynamicParameters.Add($"@{kp.Key}", kp.Value);
+            }
+            var ok =  await _dataAccessor.GetData<User>(_connString, query, dynamicParameters);
+
+            return ok.ToList().FirstOrDefault();
+        }
     }
 }
