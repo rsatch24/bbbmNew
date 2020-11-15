@@ -48,17 +48,59 @@ namespace bbbm.Controllers
 
         public IActionResult About()
         {
-            return View();
+            AboutPageModel np = FillAboutPageModel();
+            return View(np);
+           
+        }
+        private AboutPageModel FillAboutPageModel()
+        {
+            AboutPageModel np = new AboutPageModel();
+            np.PageID = (int)PageEnums.About;
+            np.PageName = PageEnums.About.ToString();
+            np.URL = "/About";
+            Dictionary<string, object> paramVals = new Dictionary<string, object>();
+            paramVals.Add("PageID", np.PageID);
+            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+
+            return np;
         }
         public IActionResult FAQ()
         {
-            return View();
+            FAQPageModel np = fillFAQModel();
+            return View(np);
+        }
+
+        private FAQPageModel fillFAQModel()
+        {
+            FAQPageModel np = new FAQPageModel();
+            np.PageID = (int)PageEnums.FAQ;
+            np.PageName = PageEnums.FAQ.ToString();
+            np.URL = "/FAQ";
+            Dictionary<string, object> paramVals = new Dictionary<string, object>();
+            paramVals.Add("PageID", np.PageID);
+            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+
+            return np;
         }
 
         public IActionResult CorporateEngagement()
         {
-            return View();
+            CorporateEngagementModel np = FillCorpPageModel();
+            return View(np);
         }
+        private CorporateEngagementModel FillCorpPageModel()
+        {
+            CorporateEngagementModel np = new CorporateEngagementModel();
+            np.PageID = (int)PageEnums.CorporateEngagement;
+            np.PageName = PageEnums.CorporateEngagement.ToString();
+            np.URL = "/CorporateEngagment";
+            Dictionary<string, object> paramVals = new Dictionary<string, object>();
+            paramVals.Add("PageID", np.PageID);
+            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+
+            return np;
+        }
+
         public IActionResult IntegrativeNutrition()
         {
             IntNutritionPageModel np = FillNutritionPageModel();

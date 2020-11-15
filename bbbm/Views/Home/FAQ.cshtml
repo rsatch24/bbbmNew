@@ -1,125 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model FAQPageModel
+@using bbbm.DataModels;
+@using bbbm.Entities;
+@using bbbm.Enums;
 
-    <div class="faq-container">
-        <div class="text-center header-color"> <h3>Frequently Asked Questions </h3></div>
-        <div class="faq-container-header">
-            <div class="divider div-transparent div-arrow-down mb-5"></div>
+<div class="faq-container">
+    <div class="text-center header-color">
+        @Html.Raw(Model.pageSections[(int)faq_enums.faq_title].SectionContent)
+    </div>
+    <div class="faq-container-header">
+        <div class="divider div-transparent div-arrow-down mb-5"></div>
+    </div>
+
+    <div class="welcome-text">
+        <p class="mb-3 para-text">
+            <div class="container pl-0">
+                <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#NumClients" role="button" aria-expanded="false" aria-controls="NumClients">
+                    <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
+                    @Html.Raw(Model.pageSections[(int)faq_enums.question_1].SectionContent)
+                </a>
+            </div>
+        </p>
+        <div class="collapse" id="NumClients">
+            @Html.Raw(Model.pageSections[(int)faq_enums.answer_1].SectionContent)
+
         </div>
 
-        <div class="welcome-text">
-            <p class="mb-3 para-text">
-                <div class="container pl-0">
-                    <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#NumClients" role="button" aria-expanded="false" aria-controls="NumClients">
-                        <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
-                        <span class="align-middle">How many clients have you successfully treated? </span>
-                    </a>
-                </div>
-            </p>
-            <div class="collapse" id="NumClients">
-                <p>
-                    Mid-100’s.  I define success by at minimum accomplishing the client’s goals.
-                </p>
-                <p>
-                    Can you put that in perspective?
-                </p>
-                <p>
-                    Sure.  I’ve had in the 10’s of people opt to drop out of care from personal choice due to not being ready to implement changes, sometimes due to investment requirements, and sometimes because we are just not a good fit on either end.
-                </p>
-                <p>
-                    Most are successful.
-                </p>
-            </div>
 
+        <p class="mb-3 para-text">
+            <div class="container pl-0">
+                <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#NumConsults" role="button" aria-expanded="false" aria-controls="NumConsults">
+                    <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
+                    @Html.Raw(Model.pageSections[(int)faq_enums.question_2].SectionContent)
+                </a>
+            </div>
+        </p>
+        <div class="collapse" id="NumConsults">
+            @Html.Raw(Model.pageSections[(int)faq_enums.answer_2].SectionContent)
+           
+        </div>
 
-            <p class="mb-3 para-text">
-                <div class="container pl-0">
-                    <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#NumConsults" role="button" aria-expanded="false" aria-controls="NumConsults">
-                        <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
-                        <span class="align-middle">How many consults do I need to see the results? </span>
-                    </a>
-                </div>
-            </p>
-            <div class="collapse" id="NumConsults">
-                <p>
-                    It only takes 1 consultation to see results within the subsequent 1-3 weeks of implementing the recommended changes.
-                </p>
-                <p>
-                    Most people require 3-5 consults over the course of 6 months to accomplish their goals.   Consults tend to be spaced 4-8 weeks apart.
-                </p>
-                <p>
-                    If your current state includes multiple chronic diagnoses and symptoms preventing you from living life your healing process will likely take around 1 year.  Such cases are usually facilitated by working alongside a functional medicine physician.
-                </p>
+        <p class="mb-3 para-text">
+            <div class="container pl-0">
+                <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#FoodMed" role="button" aria-expanded="false" aria-controls="FoodMed">
+                    <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
+                    @Html.Raw(Model.pageSections[(int)faq_enums.question_3].SectionContent)
+                </a>
             </div>
+        </p>
+        <div class="collapse" id="FoodMed">
+            @Html.Raw(Model.pageSections[(int)faq_enums.answer_3].SectionContent)
+        </div>
+        <p class="mb-3 para-text">
+            <div class="container pl-0">
+                <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#initConsult" role="button" aria-expanded="false" aria-controls="initConsult">
+                    <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
+                    @Html.Raw(Model.pageSections[(int)faq_enums.question_4].SectionContent)
+                </a>
+            </div>
+        </p>
+        <div class="collapse" id="initConsult">
+            @Html.Raw(Model.pageSections[(int)faq_enums.answer_4].SectionContent)
+        </div>
+        <p class="mb-3 para-text">
+            <div class="container pl-0">
+                <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#phil" role="button" aria-expanded="false" aria-controls="phil">
+                    <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
+                    @Html.Raw(Model.pageSections[(int)faq_enums.question_5].SectionContent)
+                </a>
+            </div>
+        </p>
+        <div class="collapse" id="phil">
 
-            <p class="mb-3 para-text">
-                <div class="container pl-0">
-                    <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#FoodMed" role="button" aria-expanded="false" aria-controls="FoodMed">
-                        <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
-                        <span class="align-middle">What is food as medicine? </span>
-                    </a>
-                </div>
-            </p>
-            <div class="collapse" id="FoodMed">
-                <p>
-                    Food As Medicine is the practice of using foods and herbs in specific quantities for specific lengths of time to facilitate the healing process.  Food As Medicine is best complimented by targeted herbal and nutraceutical therapies alongside lab testing to promote whole person healing.
-                </p>
-            </div>
-            <p class="mb-3 para-text">
-                <div class="container pl-0">
-                    <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#initConsult" role="button" aria-expanded="false" aria-controls="initConsult">
-                        <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
-                        <span class="align-middle">What does the initial consult cover? </span>
-                    </a>
-                </div>
-            </p>
-            <div class="collapse" id="initConsult">
-                <p>
-                    I ask that everyone fill out my Intake Form and return this to alongside any labs from the past 6 months at least 48 hours prior the consultation.
-                </p>
-                <p>
-                    At the start of every consultation I offer the opportunity for you to voice your questions, concerns, and goals for the consultation.  Once I understand where you want to go, we will spend the first 30-45 minutes going into a detailed discussion on your history and current symptoms as well as lifestyle if appropriate.
-                </p>
-                <p>
-                    From here I will outline your path forward as well as detail the recommendations.  These recommendations will include dietary changes and may include herbal or nutraceutical therapy, lifestyle modifications, and/or lab testing.
-                </p>
-                <p>
-                    All supplements must be purchased post-consultation and are provided at the maximum possible discount allowed by the manufacturer. Labs will be run through your Primary Care or specialty Physician or prescribed by myself. Some labs including Genova, SpectraCell, and Parasitology Center have out-of-pocket costs regardless of the prescribing provider.
-                </p>
-                <p>
-                    Throughout the consultation all questions are welcomed and answered.
-                </p>
-            </div>
-            <p class="mb-3 para-text">
-                <div class="container pl-0">
-                    <a class="btn btn-outline-primary custom-button" data-toggle="collapse" href="#phil" role="button" aria-expanded="false" aria-controls="phil">
-                        <i class="fa fa-plus align-middle" aria-hidden="true"> </i>
-                        <span class="align-middle">What is your practice philosophy? </span>
-                    </a>
-                </div>
-            </p>
-            <div class="collapse" id="phil">
-                <p>
-                    My job as a nutritionist is to utilize the most recent cutting edge science and work with you as a unique, evolving individual to help you find and maintain a state of wellness and balance.
-                </p>
-                <p>
-                    In long form…
-                </p>
-                <p>
-                    Our physical bodies are built from the food we eat, the water we drink, the air we breathe, all heavily influenced by our thoughts and emotions; creating a unique and interconnected system that is each one of us.  Over the past several decades, revolutions have been made in our understanding of cell biology and chemistry which is largely placed under the context of Functional Medicine, Biochemical Individuality, Epigenetics, and Nutrigenomics.  This knowledge base is expanding exponentially and daily. Ultimately, what works for one person may work very differently in another.
-                </p>
-                <p>
-                    My job is to help you identify the root cause(s) of your symptoms.  By tracing back your symptoms to their origin, we create a personalized pathway to healing.   Oftentimes what you need changes as your body heals and shifts.
-                </p>
-                <p>
-                    In my practice less tends to be more.  Through using a combination of targeted foods and herbal therapies as and in conjunction with medicine, your body begins to make distinct shifts towards wellness.  By following how your body responds, your healing path is optimized as you go until your goals are achieved.
-                </p>
-                <p>
-                    For those who feel it will serve, this process is complimented with personalized lifestyle recommendations.  Frequently our habits are created for a reason at some point during our life.  By understanding how the habits you wish to change have served you, lasting and sustainable shifts can be created.
-                </p>
-            </div>
+            @Html.Raw(Model.pageSections[(int)faq_enums.answer_5].SectionContent)
         </div>
     </div>
+</div>

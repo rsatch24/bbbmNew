@@ -1,8 +1,12 @@
-﻿
+﻿@model AboutPageModel
+@using bbbm.Enums
+
 <div class="about-container-full">
     <div class="container-row-about">
         <div class="about-container mb-5">
-            <div class="text-center header-color"> <h3>About </h3></div>
+            <div class="text-center header-color">
+                @Html.Raw(Model.pageSections[(int)About_Section_Enums.about_title].SectionContent)
+            </div>
             <div id="about-container-id">
                 <div class="divider div-transparent div-arrow-down mb-5"></div>
             </div>
@@ -15,17 +19,7 @@
                 <div class="text-center col-flex" style="color:#575757">
 
                     <div class="row-noflex">
-                        <h3 style="font-size: 20px;">Background</h3>
-                        <br />
-                        <p class="mb-3 para-text">
-                            Joshua Nachman, MS, CNS, CPT is the owner of Balanced Bodies Balanced Minds, LLC and holds a Master of Science in Nutrition and Integrative Health from Maryland University of Integrative Health.
-                        </p>
-                        <p class="mb-3 para-text">
-                            He works as a consultant for precision nutrition and nutrition R&D companies, a speaker for public and private companies and government organizations.
-                        </p>
-                        <p class="mb-3 para-text">
-                            Prior, Joshua worked as an integrative nutritionist at the <a href="https://www.hopkinsmedicine.org/integrative_medicine_digestive_center/" target="_blank"> Johns Hopkins Integrative Medicine and Digestive Center </a>, as a member of the BCNS Certification Exam Writers Board, and instructed nutrition courses at Stratford University and Maryland University of Integrative Health.
-                        </p>
+                        @Html.Raw(Model.pageSections[(int)About_Section_Enums.top_right].SectionContent)
                     </div>
                 </div>
             </div>
@@ -34,41 +28,23 @@
     <div class="about-2-container">
         <div class="content-row-flex">
             <div class="text-center col-flex" style="color:#575757">
-                <div class="row-vertical">
-                    <div class="simp-flex">
-                        <h3 style="font-size: 20px;">Education</h3>
-                        <br />
-                        <p class="mb-3 para-text">
-                            As an energy medicine practitioner, Joshua has been privleged to train in small groups with indigenous teachers.  Over time he has immersed himself in various traditions including Sivananda Yoga, Mystical Judaism, and pre-Egyptian Healing Schools among others.
-                        </p>
-                    </div>
-                    <div class="simp-flex">
-                        <p class="mb-3  para-text">
-                            Prior to studying nutrition, Joshua studied Applied Physics at the University of Maryland Baltimore County where he completed his BS and Master’s coursework.  He has also worked as a personal trainer certified by the American College of Sports Medicine
-                        </p>
-                    </div>
-                    <div class="simp-flex">
-                        <p class="mb-3  para-text">
-                            Through Joshua’s diagnosis in 2008 with Crohn’s Disease, he began to understand the transformative power of nutrition, lifestyle, and indigenous healing which culminated in his full healing from Crohn’s. It also launched his current professional journey committed to guiding others towards healing and finding balance.
-                        </p>
-
-                    </div>
-                    <div class="flex-grow-1"> </div>
-                </div>
+                <div class="row-noflex">
+                    @Html.Raw(Model.pageSections[(int)About_Section_Enums.bottom_left].SectionContent)
+                  </div>
             </div>
 
             <div class="text-center col-flex" style="color:#575757">
                 <div class="row-noflex">
-                    <h3 style="font-size: 20px;">Featured in</h3>
+                    @Html.Raw(Model.pageSections[(int)About_Section_Enums.bottom_right_title].SectionContent)
                     <br />
                     <div class="content-row-flex">
                         <div class="col-img-flex">
-                                <img class="abt-img" src="~/content/HopkinsMedicine.jpg" width="150" height="150" />
+                            <img class="abt-img" src="~/content/HopkinsMedicine.jpg" width="150" height="150" />
                         </div>
                         <div class="col-img-flex">
-                                <a href="https://www.huffpost.com/entry/kale-poisoning-heavy-metal-mother-jones_n_55bab86be4b06363d5a19db9" target="_blank">
-                                    <img class="abt-img" src="~/content/huffington_post_logo-2.jpg" width="275" height="115" />
-                                </a>
+                            <a href="https://www.huffpost.com/entry/kale-poisoning-heavy-metal-mother-jones_n_55bab86be4b06363d5a19db9" target="_blank">
+                                <img class="abt-img" src="~/content/huffington_post_logo-2.jpg" width="275" height="115" />
+                            </a>
                         </div>
                         <div class="col-img-flex">
                             <a href="https://www.prevention.com/food-nutrition/healthy-eating/a20451112/kickstart-clean-eating-diet/" target="_blank">
@@ -94,31 +70,7 @@
                     </div>
                 </div>
             </div>
-            @*<br />
-            <div class="col-flex">
-                <img src="~/content/HopkinsMedicine.jpg" width="400" height="400" />
-            </div>
-            <div class="col-flex">
-                <img src="~/content/huffington_post_logo-2.jpg" width="550" height="221" />
-            </div>*@
         </div>
     </div>
 </div>
 
-@*Joshua Nachman, MS, CNS, CPT is the owner of Balanced Bodies Balanced Minds, LLC and holds a Master of Science in Nutrition and Integrative Health from Maryland University of Integrative Health.  He works as a consultant for precision nutrition and nutrition R&D companies, a speaker for public and private companies and government organizations.  Prior, Joshua worked as an integrative nutritionist at the  Johns Hopkins Integrative Medicine and Digestive Center, as a member of the BCNS Certification Exam Writers Board, and instructed nutrition courses at Stratford University and Maryland University of Integrative Health.
-
-    As a nutritionist, Joshua has been featured in:
-
-    The Huffington Post
-    Hopkins Medicine
-    Prevention Magazine
-    Johns Hopkins Health Review
-    Natural Awakenings
-    Craftsmanship
-    As an energy medicine practitioner, Joshua has been privleged to train in small groups with indigenous teachers.  Over time he has immersed himself in various traditions including Sivananda Yoga, Mystical Judaism, and pre-Egyptian Healing Schools among others.
-
-    Prior to studying nutrition, Joshua studied Applied Physics at the University of Maryland Baltimore County where he completed his BS and Master’s coursework.  He has also worked as a personal trainer certified by the American College of Sports Medicine. Through Joshua’s diagnosis in 2008 with Crohn’s Disease, he began to understand the transformative power of nutrition, lifestyle, and indigenous healing which culminated in his full healing from Crohn’s.  You can read more about Joshua’s healing journey here.  It also launched his current professional journey committed to guiding others towards healing and finding balance.
-
-
-
-    Learn more about Nutrition,  Energy Medicine, or Invest in a Consultation.*@

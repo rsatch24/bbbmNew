@@ -9,10 +9,6 @@
         </div>
         <div class="mt-5 text-center mb-5" style="margin-left: 10%; margin-right: 10%;">
             @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.sub_header].SectionContent)
-            @*<span class="font-italic"> As an Integrative Nutritionist, I use Food as Medicine alongside targeted nutraceutical and herbal therapies and lab testing as needed for both an adult and pediatric population.</span>
-            <br />
-            <br />
-            <span> <a href="/Home/CorporateEngagement"> Corporate Engagement Information </a></span>*@
         </div>
         <div class="content-row-flex">
             <div class="col-flex">
@@ -23,53 +19,12 @@
 
                 <div class="row-noflex">
                     @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.top_right].SectionContent)
-
-                    @*<h3 class="text-center" style="font-size: 20px;">Areas of Specialty</h3>
-                    <div>
-                        <ul>
-                            <li>
-                                Gastrointestinal Conditions: IBS & SIBO + Managing Crohn’s, Colitis, Celiac, and Gastroparesis
-                            </li>
-                            <li>
-                                Autoimmunity: Reducing Symptoms & Medications (alongside your medical doctor)
-                            </li>
-                            <li>
-                                Neurological Conditions: Reducing Symptoms from ADD, ADHD, & Autism Spectrum Disorders
-                            </li>
-                            <li>
-                                Chronic Symptoms of Unknown Origin
-                            </li>
-                        </ul>
-                    </div>*@
                 </div>
             </div>
 
             <div class="col-flex">
                 <div class="row-noflex">
                     @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.bottom_left].SectionContent)
-
-                    @*<h3 class="text-center" style="font-size: 20px;">Appointments Times & Locations</h3>
-                    <div class="text-center apts-loc-ul">
-                        <ul class="pl-0" style="list-style-type: none;">
-                            <li class="pr-4" style="margin-bottom: 2em;">
-                                Friday: 1:00 - 5:00 PM
-                            </li>
-                            <li style="margin-bottom: 2em;">
-                                Saturday : 11:00 AM – 5:00 PM
-                            </li>
-                            <li style="margin-bottom: 2em;">
-                                <span> All consultations are via phone or video call</span>
-                            </li>
-                            <li style="margin-bottom: 2em; font-size: 14px; margin-left:5%; margin-right: 5%;">
-                                <p> ***After the consultation your follow up email will include a summary of the consultation and your personal root causes alongside all dietary recommendations and your therapeutic protocol.***</p>
-
-                            </li>
-                        </ul>
-
-                    </div>*@
-                    @*<div class="int-nut-faq-display">
-                        <h3 class="text-center" style="font-size: 20px;"><a href="/Home/FAQ"> Frequently Asked Questions </a></h3>
-                    </div>*@
                 </div>
 
             </div>
@@ -77,50 +32,13 @@
             <div class="col-flex">
                 <div class="row-noflex">
                     @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.bottom_right].SectionContent)
-                    @*<h3 class="text-center" style="font-size: 20px;">Scheduling</h3>
-                    <div class="text-center">
-                        <ul class="pl-0" style="list-style-type: none;">
-                            <li>
-                                Call: 845-544-9427
-                            </li>
-                            <li>
-                                Use Contact Form: <a href="../Contact/Index">here</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <h3 class="text-center" style="font-size: 20px;">Investment</h3>
-                    <div class="text-center">
-                        <ul class="pl-0" style="list-style-type: none;">
-                            <li>
-                                Initial Consultation (1.5 hours): $170.00
-                            </li>
-                            <li>
-                                Follow Up Consultation (30 – 90 minutes): $100.00/hr
-                            </li>
-                        </ul>
-
-                    </div>
-                    <h3 class="text-center" style="font-size: 20px;">Insurance</h3>
-                    <div class="text-center">
-                        <ul class="pl-0" style="list-style-type: none;">
-                            <li>
-                                I do not accept insurance
-                            </li>
-                            <li>
-                                I provide upon request the form necessary to submit for reimbursement from an out-of-network provider.
-                            </li>
-                        </ul>
-
-                    </div>*@
-
                 </div>
 
             </div>
 
             <div class="col-flex">
                 <div class="row-noflex">
-                    <h3 class="text-center" style="font-size: 20px;"><a href="/Home/FAQ"> Frequently Asked Questions </a></h3>
+                    @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.frequently_asked_questions].SectionContent)
                 </div>
 
             </div>
