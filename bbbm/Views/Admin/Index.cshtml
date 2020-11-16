@@ -1,0 +1,103 @@
+﻿@model AdminModel
+@using bbbm.Enums 
+@using bbbm.DataModels
+
+    <div class="admin-container">
+        <div id="" class="admin-sidenav box-shadow">
+            <nav id="sidebar">
+                <div class="sidebar-header text-center mt-3">
+                    <h3 class="text-white">Edit Pages</h3>
+                </div>
+                <div id="page-list" class="text-center">
+                    <ul class="list-unstyled components">
+                        <li>
+                            <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.Home)')">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.IntegrativeNutrition)')">Integrative Nutrition</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.About)')">About</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.Contact)')">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.CorporateEngagement)')">Corporate Engagement</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.FAQ)')">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="pt-5 text-center">
+                <a class="text-white" href="/Admin/Logout"> Logout</a>
+            </div>
+
+        </div>
+        <div class="admin-content">
+            <h4 class="mt-5"> Editing @Model.PageName Page </h4>
+            <div class="dropdown">
+                <button class="btn btn-outline-primary custom-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Choose A Section To Modify
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach (PageSection ps in Model.pageSections)
+                    {
+                        <a class="dropdown-item" onclick="setEditorContent('@ps.SectionID', '@ps.SectionContent', '@ps.SectionName')">@ps.SectionName</a>
+                    }
+                </div>
+            </div>
+            <br />
+            <input id="sectionID" name="sectionID" type="hidden" value="1" />
+
+            <textarea id="testEditor" name="testEditor"> </textarea>
+
+
+            <button id="updateButton" class="btn btn-xl" onclick="saveChanges(@Model.PageID)"> Update Section </button>
+        </div>
+        
+
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#testEditor").jqte();
+    });
+
+    function saveChanges(pageID) {
+        var section = document.getElementById("sectionID").value;
+        var sectionID = parseInt(section);
+        var EditedText = { SectionID: sectionID, PageID: pageID, SectionContent: $("#testEditor").val() }
+
+        $.ajax({
+            type: "Post", 
+            dataType: "json", 
+            url: "/Admin/saveContentToDB",
+            traditional: true, 
+            data: JSON.stringify(EditedText), 
+            contentType: "application/json;charset=utf-8", 
+            success: function (data) {
+                alert("Saved!");
+            }, 
+            error: function (xhr, status, error) {
+                alert(error);
+            }
+        })
+
+    }
+
+    function ShowSectionOptions(s) {
+
+        window.location = '/Admin/Index?PageID=' + s;
+    }
+
+    function setEditorContent(sectionID, content, sectName) {
+        $("#sectionID").val(sectionID);
+        $("#testEditor").jqteVal(content);
+        $("#dropdownMenuButton").html(sectName);
+
+    }
+
+</script>

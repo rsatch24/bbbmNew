@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bbbm", "bbbm\bbbm.csproj", "{5602DED2-F63E-49CA-B570-F103D35A407A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bbbm.data", "bbbm.data\bbbm.data.csproj", "{E9F0DFC5-859D-4CC7-BA33-CF03FE0E567A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bbbm.data", "bbbm.data\bbbm.data.csproj", "{E9F0DFC5-859D-4CC7-BA33-CF03FE0E567A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

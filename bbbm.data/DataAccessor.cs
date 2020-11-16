@@ -43,5 +43,15 @@ namespace bbbm.data
                    var t = await connection.ExecuteAsync(query, queryParams, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public List<T> GetQuickData<T>(string connectionString, string query, object queryParams)
+        {
+            using (IDbConnection connection = new MySqlConnection(connectionString))
+            {
+                var ok = connection.Query<T>(query, queryParams);
+                return ok.ToList();
+            }
+        }
+
     }
 }

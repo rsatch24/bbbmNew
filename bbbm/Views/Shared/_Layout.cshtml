@@ -7,14 +7,15 @@
     int cssGen = r.Next();
 
     string path = Context.Request.Path.Value;
-    string integrativeLink = "/Home/Index#integrative-nutrition";
+    string bgImgClass = "d-none";
+    string bgNavbar = "bg-transparent scrolled";
+    string nav_link_color = "nav-link scrolled";
+    ////check if path not on home/index or /, display href for integrative nutrition based on that. 
+    if (path.Length < 2) {
+        bgImgClass = "home-image-div";
+        bgNavbar = "bg-transparent"; 
+        nav_link_color = "nav-link"; }
 
-    //check if path not on home/index or /, display href for integrative nutrition based on that. 
-    if (path.Length < 2) { integrativeLink = "#integrative-nutrition"; }
-
-    //var s = path;
-    //var curURL = Path.
-    //var c = curURL;
 
 }
 <head>
@@ -25,10 +26,20 @@
     <link rel="stylesheet" href="~/css/site.css?v=@cssGen.ToString()" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @* <script src="~/TextEditorContent/jquery-te-1.4.0.min.js"></script>*@
+    <script src="~/TextEditorContent/jquery-te-1.4.0.min.js"></script>
+    <link href="~/TextEditorContent/jquery-te-1.4.0.css" rel="stylesheet" />
 </head>
 <body>
-    <header class="sticky-top">
-        <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-light box-shadow sticky-top pr-lg-5 pl-lg-5">
+    <header>
+        <div class="@bgImgClass">
+            <div class="position-absolute text-center" style="z-index:1029;">
+                <h1 class="header-title">BALANCED BODIES BALANCED MINDS </h1>
+                <h6 class="header-sub-title">Joshua Nachman, MS, CNS</h6>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light @bgNavbar box-shadow fixed-top pr-lg-5 pl-lg-5">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/content/site-logo.jpg" width="250" height="50" />
@@ -41,68 +52,87 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="@nav_link_color" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link int-nut-id">Integrative Nutrition</a>
+                            <a class="@nav_link_color" asp-area="" asp-controller="Home" asp-action="IntegrativeNutrition">Integrative Nutrition</a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link int-nut-id">Integrative Nutrition</a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a class="@nav_link_color" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                            <a class="@nav_link_color" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container-fluid">
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container-fluid">
+        <div class="container">
             <div class="text-center footer-center">
-                <a class="pr-2 footer-text" asp-controller="Home" asp-action="FAQ"> FAQ</a>
-                <span class="pr-2 footer-text">|</span>
-                <a class="pr-2 footer-text" asp-controller="Home" asp-action="Index"> HOME </a>
-                <span class="pr-2 footer-text">|</span>
-                <a class="pr-2 footer-text int-nut-id"> INTEGRATIVE NUTRITION </a>
-                <span class="pr-2 footer-text">|</span>
-                <a class="pr-2 footer-text" asp-controller="Home" asp-action="About"> ABOUT </a>
-                <span class="pr-2 footer-text">|</span>
-                <a class="pr-2 footer-text" asp-controller="Contact" asp-action="Index"> CONTACT </a>
+                <div class="simp-flex-footer">
+                    <a class="pr-2 footer-text" asp-controller="Home" asp-action="FAQ"> FAQ</a>
+                    <span class="pr-2 footer-text footer-txt-divider">|</span>
+                </div>
+                <div class="simp-flex-footer">
+                    <a class="pr-2 footer-text" asp-controller="Home" asp-action="Index"> HOME </a>
+                    <span class="pr-2 footer-text footer-txt-divider">|</span>
+                </div>
+                <div class="simp-flex-footer">
+                    <a class="pr-2 footer-text" asp-area="" asp-controller="Home" asp-action="IntegrativeNutrition">INTEGRATIVE NUTRITION</a>
+                    <span class="pr-2 footer-text footer-txt-divider">|</span>
+                </div>
+                <div class="simp-flex-footer">
+                    <a class="pr-2 footer-text" asp-controller="Home" asp-action="About"> ABOUT </a>
+                    <span class="pr-2 footer-text footer-txt-divider">|</span>
+                </div>
+                <div class="simp-flex-footer">
+                    <a class="pr-2 footer-text" asp-controller="Contact" asp-action="Index"> CONTACT </a>
+                </div>
 
             </div>
             <span>  &copy; 2020 - bbbmNutrition </span>
         </div>
 
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   @* <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript">
+    
 
-        $('.int-nut-id').click(function () {
 
-            if ("@integrativeLink" == "#integrative-nutrition") {
-                $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
-            }
-            else {
-                window.location = "@integrativeLink";
-            }
-        });
+    @*<script type="text/javascript">
 
-        $(document).ready(function () {
-            if (location.hash == "#integrative-nutrition") {
-                $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
-            }
-        });
+            $('.int-nut-id').click(function () {
 
-    </script>
+                if ("@integrativeLink" == "#integrative-nutrition") {
+                    $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
+                        $('.navbar-collapse').collapse('hide');
+                }
+                else {
+                    window.location = "@integrativeLink";
+                }
+            });
+
+            $(document).ready(function () {
+                if (location.hash == "#integrative-nutrition") {
+                    $(document).scrollTop($("#integrative-nutrition").offset().top - 100);
+                }
+            });
+
+        </script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
