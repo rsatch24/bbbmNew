@@ -24,7 +24,21 @@ namespace bbbm.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            HomePageModel hp = fillHomePageModel();
+            return View(hp);
+        }
+
+        private HomePageModel fillHomePageModel()
+        {
+            HomePageModel hp = new HomePageModel();
+            hp.PageID = (int)PageEnums.Home;
+            hp.PageName = PageEnums.Home.ToString();
+            hp.URL = "/";
+            Dictionary<string, object> paramVals = new Dictionary<string, object>();
+            paramVals.Add("PageID", hp.PageID);
+            hp.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+
+            return hp;
         }
 
         public IActionResult Privacy()

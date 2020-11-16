@@ -1,4 +1,5 @@
-﻿@using bbbm.DataModels;
+﻿@model HomePageModel
+@using bbbm.DataModels;
 @using bbbm.Entities;
 @using bbbm.Enums;
 
@@ -17,10 +18,16 @@
                 <div class="header-color text-center">  @Html.Raw(Model.pageSections[(int)Home_Section_Enums.welcome_title].SectionContent) </div>
                 <div class="divider div-transparent div-arrow-down mb-5"></div>
             </div>
-            <div class="text-center welcome-text">
-                @Html.Raw(Model.pageSections[(int)Home_Section_Enums.welcome_text].SectionContent)
+            <div class="content-row-flex">
+                <div class="col-flex welcome-image">
+                    <img src="~/content/welcome-image.jpeg" width="350" height="500" />
+                </div>
+                <div class="col-flex">
+                    <div class="row-no-flex text-center">
+                        @Html.Raw(Model.pageSections[(int)Home_Section_Enums.welcome_text].SectionContent)
+                    </div>
+                </div>
             </div>
-
         </div>
 
     </div>
