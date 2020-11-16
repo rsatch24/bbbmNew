@@ -26,6 +26,15 @@ namespace bbbm
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddControllersWithViews();
             services.AddSingleton<IContactRepository, ContactRepository>();
             services.AddSingleton<IDataAccessor, DataAccessor>();
@@ -33,7 +42,8 @@ namespace bbbm
             services.Configure<SmtpSettings>(Configuration.GetSection("SmtpSettings"));
             services.AddSingleton<IEMailer, EMailer>();
 
-           // services.AddAuthentication("dbAuth").
+            // services.AddAuthentication("dbAuth").
+           
 
         }
 
@@ -50,6 +60,8 @@ namespace bbbm
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

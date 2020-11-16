@@ -53,5 +53,24 @@ namespace bbbm.Repositories
             await _dataAccessor.SaveDataAsync(_connString, query, dynamicParameters);
         }
 
+        public List<Page> GetPages()
+        {
+            string query = "SELECT * FROM Pages";
+            var ok =  _dataAccessor.GetQuickData<Page>(_connString, query, null);
+            return ok.ToList();
+        }
+
+        public async Task<User> GetUser(IDictionary<string, object> queryParams)
+        {
+            string query = "SELECT * FROM Users Where RoleName = @RoleName AND UserName = @UserName AND PassWord = @PassWord";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            foreach (KeyValuePair<string, object> kp in queryParams)
+            {
+                dynamicParameters.Add($"@{kp.Key}", kp.Value);
+            }
+            var ok =  await _dataAccessor.GetData<User>(_connString, query, dynamicParameters);
+
+            return ok.ToList().FirstOrDefault();
+        }
     }
 }

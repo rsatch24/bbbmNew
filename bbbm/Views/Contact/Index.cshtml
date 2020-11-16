@@ -1,6 +1,7 @@
 ﻿@model ContactModel
 @using bbbm.DataModels;
 @using bbbm.Entities;
+@using bbbm.Enums;
 
 
 @{
@@ -23,7 +24,9 @@
         else
         {
 <div class="contact-container">
-    <div class="text-center header-color"> <h3>Contact</h3></div>
+    <div class="text-center header-color">
+        @Html.Raw(Model.pageSections[(int)contact_section_enums.contact_title].SectionContent)
+    </div>
     <div class="divider div-transparent div-arrow-down mb-5"></div>
     <form class="contact-form" method="post" action=@Url.Action("SaveContact", "Contact")>
 
@@ -35,29 +38,16 @@
         <div class="form-group">
             <input type="email" class="form-control" id="EmailInput" name="EmailInput" placeholder="Enter E-mail" required>
         </div>
-        <label> Interest: </label>
-        <hr class="solid mt-0" />
+        @Html.Raw(Model.pageSections[(int)contact_section_enums.interest_title].SectionContent)
+        <hr class="solid mt-2" />
 
         @foreach (Reasons r in Model.Reasons)
         {
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="reason_@r.ReasonID" name="reason_@r.ReasonID" required>
-            <label class="form-check-label" for="reason_@r.ReasonID">@r.reason</label>
-        </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="reason_@r.ReasonID" name="reason_@r.ReasonID" required>
+                <label class="form-check-label" for="reason_@r.ReasonID">@r.reason</label>
+            </div>
         }
-        @*<div class="form-check">
-                <input type="checkbox" class="form-check-input" id="reason_1" name="reason_1" required>
-                <label class="form-check-label" for="reason_1">Nutrition - Initial Consultation</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="reason_2" name="reason_2" required>
-                <label class="form-check-label" for="reason_2">Nutrition - Follow-up Consultation</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="reason_3" name="reason_3" required>
-                <label class="form-check-label" for="reason_3">Consultant Services</label>
-            </div>*@
-
         <br />
         <hr class="solid mt-0" />
         <div class="form-group mb-2">
@@ -71,7 +61,7 @@
             }
         <br />*@
         <div class="text-center">
-            <button type="submit" onclick="clearRequiredCheckBoxes(this)" class="btn btn-xl rounded-pill btn-outline-primary">   Send   </button>
+            <button type="submit" onclick="clearRequiredCheckBoxes(this)" class="btn btn-xl rounded-pill btn-outline-primary"> @Html.Raw(Model.pageSections[(int)contact_section_enums.button_text].SectionContent) </button>
         </div>
     </form>
 </div>

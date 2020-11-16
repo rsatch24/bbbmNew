@@ -8,5 +8,7 @@ namespace bbbm.data
         Task<List<T>> GetData<T>(string connectionString, string query, object queryParams);
         Task SaveDataAsync(string connectionString, string query, object queryParams);
         Task SaveAndReturnAsync(string connectionString, string query, object queryParams);
+
+        List<T> GetQuickData<T>(string connectionString, string query, object queryParams);
     }
 }

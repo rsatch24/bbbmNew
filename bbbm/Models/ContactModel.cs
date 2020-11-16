@@ -6,7 +6,7 @@ using bbbm.DataModels;
 
 namespace bbbm.Models
 {
-    public class ContactModel
+    public class ContactModel : HomePageModel
     {
         public string Name { get; set; }
 

@@ -1,0 +1,28 @@
+﻿
+
+    <div class="d-flex justify-content-center align-items-center container login-container">
+        @if ((bool)ViewData["ShowUnauthorized"])
+        {
+            <div class="row alert-danger pt-2 pb-2"> Unauthorized: Incorrect user name and password </div>
+        }
+        <div class="row pt-3">
+            <form class="login-form" method="post" action=@Url.Action("Login", "Admin")>
+
+                @Html.AntiForgeryToken()
+                <div class="text-center pb-3">
+                    <h4>
+                        Log In:
+                    </h4>
+                </div>
+                <div class="form-group text-center">
+                    <input type="text" class="form-control" title="remove special characters or numbers" name="nameInput" id="nameInput" aria-describedby="nameHelp" placeholder="User Name" required pattern="[A-Z\sa-z]+">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="passWordInput" name="passWordInput" placeholder="PassWord" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn custom-button"> Login</button>
+                </div>
+            </form>
+        </div>
+    </div>

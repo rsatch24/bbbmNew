@@ -1,14 +1,15 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model FAQPageModel
+@using bbbm.DataModels;
+@using bbbm.Entities;
+@using bbbm.Enums;
 
-    <div class="faq-container">
-        <div class="text-center header-color"> <h3>Frequently Asked Questions </h3></div>
-        <div class="faq-container-header">
-            <div class="divider div-transparent div-arrow-down mb-5"></div>
-        </div>
+<div class="faq-container">
+    <div class="text-center header-color">
+        @Html.Raw(Model.pageSections[(int)faq_enums.faq_title].SectionContent)
+    </div>
+    <div class="faq-container-header">
+        <div class="divider div-transparent div-arrow-down mb-5"></div>
+    </div>
 
         <div class="faq-text">
             <p class="mb-3 para-text">

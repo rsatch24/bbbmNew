@@ -10,30 +10,47 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
+using bbbm.Enums;
 
 namespace bbbm.Controllers
 {
     public class ContactController : Controller
     {
         private readonly IContactRepository _contactRepository;
+        private readonly IAdminRepository _adminRepository;
         private readonly IEMailer _emailer;
         private readonly string _recaptchaSecretKey;
         private readonly string _recaptchaSiteKey;
-        public ContactController(IContactRepository contactRepository, IEMailer mailer, IConfiguration config)
+        public ContactController(IContactRepository contactRepository, IAdminRepository adminRepository, IEMailer mailer, IConfiguration config)
         {
             _contactRepository = contactRepository;
+            _adminRepository = adminRepository;
             _emailer = mailer;
             _recaptchaSecretKey = config.GetSection("recaptchaSecretKey").Value;
             _recaptchaSiteKey = config.GetSection("recaptchaSiteKey").Value;
+
         }
         public IActionResult Index(ContactModel contactModel)
         {
-            contactModel.Reasons = _contactRepository.GetReasons().Result;
-            contactModel.recapthcaSiteKey = _recaptchaSiteKey;
+            contactModel = fillContactModel();
             ViewData.Add("success", false);
             ViewData.Add("IsValidCaptcha", false);
             ViewData.Add("initialPageLoad", true);
             return View(contactModel);
+        }
+
+        private ContactModel fillContactModel()
+        {
+            ContactModel cm = new ContactModel();
+            cm.Reasons = _contactRepository.GetReasons().Result;
+            cm.recapthcaSiteKey = _recaptchaSiteKey;
+            cm.PageID = (int)PageEnums.Contact;
+            cm.PageName = PageEnums.Contact.ToString();
+            cm.URL = "/Contact";
+            Dictionary<string, object> paramVals = new Dictionary<string, object>();
+            paramVals.Add("PageID", cm.PageID);
+            cm.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+            return cm;
         }
 
         [HttpPost]

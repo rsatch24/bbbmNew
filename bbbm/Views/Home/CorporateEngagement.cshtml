@@ -1,71 +1,29 @@
-﻿<div class="corp-eng-container">
-    <div class="text-center header-color"> <h3>Nutrition Education Lectures </h3></div>
+﻿@model CorporateEngagementModel
+@using bbbm.Enums;
+
+
+<div class="corp-eng-container">
+    <div class="text-center header-color">
+        @Html.Raw(Model.pageSections[(int)corp_engagement_enums.corp_title].SectionContent)
+    </div>
     <div id="integrative-container-id">
         <div class="divider div-transparent div-arrow-down mb-5"></div>
     </div>
     <div class="text-center pb-5" style="margin-left: 5%; margin-right: 5%;">
-        <span class="font-italic">
-            <a href="/Contact/Index"> Contact Me </a> to schedule a talk or to create a specialized lecture to fit your audience.
-        </span>
+        @Html.Raw(Model.pageSections[(int)corp_engagement_enums.corp_sub_header].SectionContent)
+
     </div>
     <div class="content-row-flex">
         <div class="col-flex corp-flex-col" style="color:#575757">
             <div class="row-noflex">
-                <h3 class="text-center" style="font-size: 20px;">Joshua has given lectures at multiple venues including:</h3>
-                <div>
-                    <ul>
-                        <li>
-                            Johns Hopkins Applied Physics Lab
-                        </li>
-                        <li>
-                            Johns Hopkins Wilmer Eye Institute
-                        </li>
-                        <li>
-                            Maryland University of Integrative Health
-                        </li>
-                        <li>
-                            Howard County Public School System
-                        </li>
-                        <li>
-                            Howard Community College
-                        </li>
-                        <li>
-                            ECO City Farms
-                        </li>
-                    </ul>
-                </div>
-
+                @Html.Raw(Model.pageSections[(int)corp_engagement_enums.left_col].SectionContent)
             </div>
         </div>
 
         <div class="col-flex" style="color:#575757">
 
             <div class="row-noflex">
-                <div>
-                    <h3 class="text-center" style="font-size: 20px;">Topics include:</h3>
-                    <div>
-                        <h5 style="font-size: 18px;">Food As Medicine </h5>
-                        <p>
-                            Straight answers on common food questions, why food sensitivities exist, and how you can heal.  Learn how Food as Medicine can help your health span equal your life span.
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h5 style="font-size: 18px;">The Paleo-Vegan Spectrum </h5>
-                        <p>
-                            From the paleolithic to the raw foods diets, there are currently over 60 popular diets and 70,000 diet books written to date.  In this talk we address the commonalities and contradictions, creating clear and actionable understandings around food.   Topics include dairy, grains, optimizing intake, eating clean, meat and saturated fats, and tapping into your innate body wisdom.
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h5 style="font-size: 18px;">Physics, Nutrition, and Energetic Healing: Building the New Paradigm  </h5>
-                        <p>
-                            Using easy to understand concepts from cutting edge physics, nutrition is addressed as a way to enhance consciousness and promote mental/emotion healing.  Practical energy healing techniques are taught to promote and sustain this process.
-                        </p>
-                    </div>
-                </div>
+                @Html.Raw(Model.pageSections[(int)corp_engagement_enums.right_col].SectionContent)
             </div>
         </div>
     </div>
