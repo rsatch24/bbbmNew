@@ -335,12 +335,12 @@ h4, .nav-link {
 .home-btn-container {
     margin-left: 7.5% !important;
 }
-.header-title {
-    font-size: 3.75em !important;
-}
-    .header-sub-title {
+/*.header-title {
+    font-size: 4.0em !important;
+}*/
+  /*  .header-sub-title {
         font-size: 1.25em !important;
-    }
+    }*/
 
     .faq-container {
         margin-left: 7.5% !important;
@@ -400,12 +400,12 @@ h4, .nav-link {
         margin-left: 5% !important;
         margin-right: 5% !important;
     }
-    .header-title {
+   /* .header-title {
         font-size: 1.5em !important;
-    }
+    }*/
 
     .header-sub-title {
-        font-size: 0.75em !important;
+        font-size: 1.0em !important;
     }
 
     .footer-center {
@@ -476,8 +476,9 @@ h4, .nav-link {
     font-weight:200;
     color: white;
     letter-spacing: 5px;
-    font-family: Lato,sans-serif,'helvetica neue',helvetica,arial,verdana;
-    text-shadow: rgba(255,255,255,.1) -1px -1px 1px, rgba(0,0,0,.5) 1px 1px 1px;
+ /*   font-family: Lato,sans-serif,'helvetica neue',helvetica,arial,verdana;*/
+    font-family: Candara;
+     text-shadow: rgba(255,255,255,.1) -1px -1px 1px, rgba(0,0,0,.5) 1px 1px 1px;
 }
 
 .header-sub-title {
@@ -485,7 +486,7 @@ h4, .nav-link {
     font-weight: 100;
     letter-spacing: 5px;
     color: white;
-    font-family: Lato,sans-serif,'helvetica neue',helvetica,arial,verdana;
+    font-family: Candara;
     text-shadow: rgba(255,255,255,.1) -1px -1px 1px, rgba(0,0,0,.5) 1px 1px 1px;
     padding-top: 5%;
 }

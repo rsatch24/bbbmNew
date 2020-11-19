@@ -28,6 +28,9 @@
                         <li>
                             <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.FAQ)')">FAQ</a>
                         </li>
+                        <li>
+                            <a href="#" onclick="ShowSectionOptions('@((int)PageEnums.Layout)')">Layout</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -90,7 +93,7 @@
 
     function ShowSectionOptions(s) {
 
-        window.location = '/Admin/Index?PageID=' + s;
+        window.location = '/Admin/LoadContent?PageID=' + s;
     }
 
     function setEditorContent(sectionID, content, sectName) {

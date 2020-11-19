@@ -12,7 +12,8 @@ namespace bbbm.Enums
        IntegrativeNutrition, 
        Contact, 
        CorporateEngagement, 
-       FAQ
+       FAQ, 
+       Layout
     }
 
     public enum Home_Section_Enums
@@ -67,6 +68,11 @@ namespace bbbm.Enums
         answer_4, 
         question_5, 
         answer_5
+    }
+
+    public enum layout_enums
+    {
+        site_name
     }
 
 

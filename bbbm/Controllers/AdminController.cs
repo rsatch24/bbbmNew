@@ -22,14 +22,19 @@ namespace bbbm.Controllers
         private readonly string _validRole = "Admin";
 
         public string SessionKeyName = "_UserName";
-
         public AdminController(IAdminRepository adminRepo)
         {
             _adminRepo = adminRepo;
             _pages = _adminRepo.GetPages();
         }
 
-        public IActionResult Index(int? PageID)
+        public IActionResult Index()
+        {
+                return RedirectToAction("Login", "Admin");
+        }
+
+        public IActionResult LoadContent(int PageID)
+           
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyName)))
             {
@@ -38,7 +43,7 @@ namespace bbbm.Controllers
             else
             {
                 AdminModel am = fillAdminModel(PageID);
-                return View(am);
+                return View("Index", am);
             }
 
         }
@@ -62,7 +67,7 @@ namespace bbbm.Controllers
             if (getCurrentUser != null)
             {
                 HttpContext.Session.SetString(SessionKeyName, name);
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("LoadContent", "Admin");
             }
 
             else
