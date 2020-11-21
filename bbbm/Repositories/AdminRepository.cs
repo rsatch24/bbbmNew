@@ -53,6 +53,20 @@ namespace bbbm.Repositories
             await _dataAccessor.SaveDataAsync(_connString, query, dynamicParameters);
         }
 
+        public async Task UpdateSectionImage(IDictionary<string, object> Params)
+        {
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            string setString = "Set imgsrc = @imgsrc";
+            string whereString = "Where SectionID = @SectionID";
+            foreach (KeyValuePair<string, object> kp in Params)
+            {
+                dynamicParameters.Add($"@{kp.Key}", kp.Value);
+            }
+            string query = @$"UPDATE Sections {setString} {whereString}";
+
+            await _dataAccessor.SaveDataAsync(_connString, query, dynamicParameters);
+        }
+
         public List<Page> GetPages()
         {
             string query = "SELECT * FROM Pages";

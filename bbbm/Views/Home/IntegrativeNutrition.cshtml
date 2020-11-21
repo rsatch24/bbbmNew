@@ -11,11 +11,11 @@
             @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.sub_header].SectionContent)
         </div>
         <div class="content-row-flex">
-            <div class="col-flex">
-                <img src="~/content/wholefoods.jpg" width="275" height="183" />
+            <div class="int-nut-img col-flex">
+                <img src="@Model.pageSections[(int)Nutrition_Section_Enums.top_left].imgsrc"  />
             </div>
 
-            <div class="col-flex">
+            <div class="col-flex"> 
 
                 <div class="row-noflex">
                     @Html.Raw(Model.pageSections[(int)Nutrition_Section_Enums.top_right].SectionContent)

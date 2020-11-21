@@ -17,5 +17,7 @@ namespace bbbm.DataModels
         public string SectionContent { get; set; }
 
         public bool isIMG { get; set; }
+
+        public string imgsrc { get; set; }
     }
 }

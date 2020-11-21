@@ -13,7 +13,8 @@ namespace bbbm.Enums
        Contact, 
        CorporateEngagement, 
        FAQ, 
-       Layout
+       Layout, 
+       Images
     }
 
     public enum Home_Section_Enums

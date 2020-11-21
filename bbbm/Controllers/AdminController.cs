@@ -10,6 +10,9 @@ using System.Text.Json;
 using bbbm.Repositories;
 using bbbm.Enums;
 using Microsoft.AspNetCore.Http;
+using System.Web;
+using System.Web;
+using System.IO;
 
 namespace bbbm.Controllers
 {
@@ -132,5 +135,34 @@ namespace bbbm.Controllers
                 return Json("something went wrong");
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFiles(IFormCollection form, IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return Content("file not selected");
+
+            var path = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot", "content",
+                        file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            string imGPathName = $"/content/{file.FileName}";
+
+            var t = form["fileSectionID"].ToString();
+            
+             var page = form["filePageID"].ToString();
+            IDictionary<string, object> valparams = new Dictionary<string, object>();
+            valparams.Add("sectionID", Convert.ToInt32(t));
+            valparams.Add("imgsrc", imGPathName);
+
+             await _adminRepo.UpdateSectionImage(valparams);
+
+            return RedirectToAction("LoadContent", "Admin", new { PageID = Convert.ToInt32(page)});
+        }
     }
-}
+}   

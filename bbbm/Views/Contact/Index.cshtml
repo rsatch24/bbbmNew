@@ -28,7 +28,7 @@
         @Html.Raw(Model.pageSections[(int)contact_section_enums.contact_title].SectionContent)
     </div>
     <div class="divider div-transparent div-arrow-down mb-5"></div>
-    <form class="contact-form" method="post" action=@Url.Action("SaveContact", "Contact")>
+    <form class="contact-form" method="post" action=@Url.Action("SaveContact", "Contact")  >
 
         @Html.AntiForgeryToken()
 
