@@ -21,7 +21,8 @@ namespace bbbm.Enums
     {
         contact_button, 
         welcome_title, 
-        welcome_text
+        welcome_text, 
+        welcome_img
     }
 
     public enum Nutrition_Section_Enums
@@ -42,6 +43,12 @@ namespace bbbm.Enums
         top_right,
         bottom_left,
         bottom_right_title,
+        img_1, 
+        img_2, 
+        img_3, 
+        img_4, 
+        img_5, 
+        img_6
     }
     public enum contact_section_enums
     {

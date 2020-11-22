@@ -56,7 +56,7 @@ namespace bbbm.Repositories
         public async Task UpdateSectionImage(IDictionary<string, object> Params)
         {
             DynamicParameters dynamicParameters = new DynamicParameters();
-            string setString = "Set imgsrc = @imgsrc";
+            string setString = "Set imgsrc = @imgsrc, SectionContent = @SectionContent";
             string whereString = "Where SectionID = @SectionID";
             foreach (KeyValuePair<string, object> kp in Params)
             {

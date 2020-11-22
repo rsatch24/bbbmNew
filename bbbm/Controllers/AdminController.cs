@@ -154,13 +154,15 @@ namespace bbbm.Controllers
             string imGPathName = $"/content/{file.FileName}";
 
             var t = form["fileSectionID"].ToString();
-            
+            var imgUrl = form["urlInput"].ToString();
+
              var page = form["filePageID"].ToString();
             IDictionary<string, object> valparams = new Dictionary<string, object>();
             valparams.Add("sectionID", Convert.ToInt32(t));
             valparams.Add("imgsrc", imGPathName);
+            valparams.Add("SectionContent", imgUrl);
 
-             await _adminRepo.UpdateSectionImage(valparams);
+            await _adminRepo.UpdateSectionImage(valparams);
 
             return RedirectToAction("LoadContent", "Admin", new { PageID = Convert.ToInt32(page)});
         }

@@ -66,6 +66,9 @@
                     <input type="file" class="custom-file-input" name="file" id="customFile">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
+                <div class="form-group mt-3">
+                    <input class="form-control" type="text" id="urlInput" name="urlInput" placeholder="Image URL" value="" />
+                </div>
 
                 <button class="btn btn-primary mt-5" type="submit">Replace Image</button>
                 <a class="btn btn-warning mt-5" onclick="removeImgVal()"> Cancel </a>
@@ -117,12 +120,13 @@
         $("#fileSectionID").val(sectionID);
         $("#testEditor").jqteVal(content);
         $("#dropdownMenuButton").html(sectName);
-
+     
       
        
         if (isIMG == "True") {
             $("#imgdiv").show();
             $("#imgpreview").attr("src", imgSrc)
+            $("#urlInput").val(content);
             $("#contentdiv").hide();
         }
         else {
@@ -139,6 +143,7 @@
 
     function removeImgVal() {
         $("#customFile").val("");
+        $("#urlInput").val("");
         $(".custom-file-label").html("");
     }
 

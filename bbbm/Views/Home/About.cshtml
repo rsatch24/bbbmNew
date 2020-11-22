@@ -13,7 +13,7 @@
             <div class="content-row-flex">
 
                 <div class="col-flex about-image">
-                    <img src="@Model.pageSections[(int)About_Section_Enums.top_left].imgsrc"  />
+                    <img src="@Model.pageSections[(int)About_Section_Enums.top_left].imgsrc" />
                 </div>
 
                 <div class="text-center col-flex" style="color:#575757">
@@ -30,7 +30,7 @@
             <div class="text-center col-flex" style="color:#575757">
                 <div class="row-noflex">
                     @Html.Raw(Model.pageSections[(int)About_Section_Enums.bottom_left].SectionContent)
-                  </div>
+                </div>
             </div>
 
             <div class="text-center col-flex" style="color:#575757">
@@ -39,33 +39,47 @@
                     <br />
                     <div class="content-row-flex">
                         <div class="col-img-flex">
-                            <img class="abt-img" src="~/content/HopkinsMedicine.jpg" width="150" height="150" />
+                            <div class="simp-flex">
+                                <a href="@Model.pageSections[(int)About_Section_Enums.img_1].SectionContent" target="_blank">
+                                    <img class="abt-img" src="@Model.pageSections[(int)About_Section_Enums.img_1].imgsrc" />
+                                </a>
+                            </div>
                         </div>
                         <div class="col-img-flex">
-                            <a href="https://www.huffpost.com/entry/kale-poisoning-heavy-metal-mother-jones_n_55bab86be4b06363d5a19db9" target="_blank">
-                                <img class="abt-img" src="~/content/huffington_post_logo-2.jpg" width="275" height="115" />
-                            </a>
+                            <div class="simp-flex">
+                                <a href="@Model.pageSections[(int)About_Section_Enums.img_2].SectionContent" target="_blank">
+                                    <img class="abt-img" src="@Model.pageSections[(int)About_Section_Enums.img_2].imgsrc" />
+                                </a>
+                            </div>
                         </div>
                         <div class="col-img-flex">
-                            <a href="https://www.prevention.com/food-nutrition/healthy-eating/a20451112/kickstart-clean-eating-diet/" target="_blank">
-                                <img class="abt-img" src="~/content/PreventionLogo.jpg" width="200" height="45" />
-                            </a>
+                            <div class="simp-flex">
+                                <a href="@Model.pageSections[(int)About_Section_Enums.img_3].SectionContent" target="_blank">
+                                    <img class="abt-img" src="@Model.pageSections[(int)About_Section_Enums.img_3].imgsrc" />
+                                </a>
+                            </div>
                         </div>
                         <div class="col-img-flex">
-                            <a href="https://www.naturalawakeningsdc.com/health/epigenetics-new-power-whole-foods/" target="_blank">
-                                <img class="abt-img" src="~/content/naturalawakenings.jpg" width="215" height="65" />
-                            </a>
+                            <div class="simp-flex">
+                                <a href="@Model.pageSections[(int)About_Section_Enums.img_4].SectionContent" target="_blank">
+                                    <img class="abt-img" src="@Model.pageSections[(int)About_Section_Enums.img_4].imgsrc" />
+                                </a>
+                            </div>
                         </div>
                         <div class="col-img-flex">
-                            <a href="http://www.johnshopkinshealthreview.com/issues/fall-winter-2016/articles/how-do-i-choose-a-healthy-sweetener" target="_blank">
-                                <img class="abt-img" src="~/content/JHHR.jpg" width="100" height="140" />
-                            </a>
+                            <div class="simp-flex">
+                                <a href="@Model.pageSections[(int)About_Section_Enums.img_5].SectionContent" target="_blank">
+                                    <img class="abt-img" src="@Model.pageSections[(int)About_Section_Enums.img_5].imgsrc" />
+                                </a>
+                            </div>
                         </div>
 
                         <div class="col-img-flex">
-                            <a href="https://craftsmanship.net/the-vegetable-detective-take-two/" target="_blank">
-                                <img class="abt-img" src="~/content/Craftmanshiplogo.jpg" width="300" height="65" />
-                            </a>
+                            <div class="simp-flex">
+                                <a href="@Model.pageSections[(int)About_Section_Enums.img_6].SectionContent" target="_blank">
+                                    <img class="abt-img" src="@Model.pageSections[(int)About_Section_Enums.img_6].imgsrc" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
