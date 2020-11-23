@@ -433,9 +433,15 @@ h4, .nav-link {
         min-width: 300px !important;
     }
 
-    .about-image img, .welcome-image img, .int-nut-img img {
-        max-width: 300px;
+    .about-image img,  .int-nut-img img {
+        max-width: 300px !important;
         height: auto;
+        max-height: 400px !important
+    }
+    .welcome-image img {
+        max-width: 300px !important;
+        height: auto;
+        max-height: 350px !important
     }
 
 }
