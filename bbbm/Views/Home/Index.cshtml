@@ -7,13 +7,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="home-container-full">
+<div class="container">
     <div class="row home-btn-container pt-2">
         <button class="btn btn-xl rounded-pill btn-outline-primary" onclick="window.location.href='/Contact/Index'"> @Html.Raw(Model.pageSections[(int)Home_Section_Enums.contact_button].SectionContent)  </button>
     </div>
-    <div class="row justify-content-center container-row pt-2">
-           
-        <div class="home-container">
+    <div class="row justify-content-center pt-2">
             <div id="home-container-id" style="width: 100%;">
                 <div class="header-color text-center">  @Html.Raw(Model.pageSections[(int)Home_Section_Enums.welcome_title].SectionContent) </div>
                 <div class="divider div-transparent div-arrow-down mb-5"></div>
@@ -28,8 +26,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
     </div>
 </div>
 

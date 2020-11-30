@@ -11,7 +11,7 @@
 
 @if ((bool)ViewData["success"])
 {
-<div class="contact-container">
+<div class="contact-container container">
     <div class="card box-shadow text-center mt-lg-5 thank-you-card">
         <h3 class="mt-5 mr-2 ml-2" style="color: #575757"> Thank you for Contacting Me. I will be speaking with you shortly.</h3>
         <div class="mt-5 mb-5">
@@ -23,7 +23,7 @@
 
         else
         {
-<div class="contact-container">
+<div class="contact-container container">
     <div class="text-center header-color">
         @Html.Raw(Model.pageSections[(int)contact_section_enums.contact_title].SectionContent)
     </div>

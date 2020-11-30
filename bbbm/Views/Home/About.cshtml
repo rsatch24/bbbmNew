@@ -1,9 +1,7 @@
 ﻿@model AboutPageModel
 @using bbbm.Enums
 
-<div class="about-container-full">
-    <div class="container-row-about">
-        <div class="about-container mb-5">
+<div class="container about-container mb-5" >
             <div class="text-center header-color">
                 @Html.Raw(Model.pageSections[(int)About_Section_Enums.about_title].SectionContent)
             </div>
@@ -23,9 +21,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="about-2-container">
         <div class="content-row-flex">
             <div class="text-center col-flex" style="color:#575757">
                 <div class="row-noflex">
@@ -86,5 +81,5 @@
             </div>
         </div>
     </div>
-</div>
+
 
