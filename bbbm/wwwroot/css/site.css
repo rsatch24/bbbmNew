@@ -387,6 +387,17 @@ max-width: 1000px;
         max-height: 350px !important
     }
 
+    .row-noflex, .row-vertical {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .int-nut-sub-header {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+
 }
 
     @media only screen and (max-width: 375px) {
@@ -501,5 +512,10 @@ max-width: 1000px;
 .about-image img, .welcome-image img, .int-nut-img img, #imgdiv img {
     max-width: 350px;
     height: auto;
+}
+
+.int-nut-sub-header {
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
