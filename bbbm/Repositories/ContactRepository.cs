@@ -53,6 +53,25 @@ namespace bbbm.Repositories
             }
 
         }
+        public async Task SaveBotContacts(Contact c)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@Name", c.name);
+            parameters.Add("@Email", c.email);
+            parameters.Add("@Message", c.message);
+            parameters.Add("@IsSpam", c.isSpam);
+            string query = $"INSERT INTO Contact(Name, Email, Message, IsSpam) VALUES(@Name, @Email, @Message, @IsSpam)";
+            try
+            {
+                await _dataAccessor.SaveDataAsync(_connString, query, parameters);
+            }
+            catch (MySqlException ex)
+            {
+                Console.Write(ex.Message);
+            }
+
+        }
 
         public async Task SaveContactReasons(int contactID, List<int> reasons)
         {

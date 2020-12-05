@@ -9,6 +9,8 @@ namespace bbbm.Repositories
         //Task SaveContacts(Contact c);
         Task SaveContactReasons(int contactID, List<int> reasons);
         Task<int> SaveContacts(Contact c);
+
+        Task SaveBotContacts(Contact c);
         Task<List<Reasons>> GetReasons();
     }
 }

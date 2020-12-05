@@ -11,5 +11,6 @@ namespace bbbm.DataModels
         public string email { get; set; }
         public string message { get; set; }
 
+        public bool isSpam { get; set; }
     }
 }

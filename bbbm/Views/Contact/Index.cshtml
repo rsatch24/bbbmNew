@@ -33,25 +33,30 @@
         @Html.AntiForgeryToken()
 
         <div class="form-group text-center">
-            <input type="text" class="form-control" title="remove special characters or numbers" name="nameInput" id="nameInput" aria-describedby="nameHelp" placeholder="Enter Name" required pattern="[A-Z\sa-z]+">
+            <input type="text" class="form-control" title="remove special characters or numbers" name="fn_1" id="fn_1" aria-describedby="nameHelp" placeholder="Enter Name" required pattern="[A-Z\sa-z]+">
+            <input type="text" class="form-control gotcha" title="remove special characters or numbers" name="nameInput" id="nameInput" aria-describedby="nameHelp" placeholder="Enter Name" pattern="[A-Z\sa-z]+">
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" id="EmailInput" name="EmailInput" placeholder="Enter E-mail" required>
+            <input type="email" class="form-control" id="fe_2" name="fe_2" placeholder="Enter E-mail" required>
+            <input type="email" class="form-control gotcha" id="EmailInput" name="EmailInput" placeholder="Enter E-mail">
         </div>
         @Html.Raw(Model.pageSections[(int)contact_section_enums.interest_title].SectionContent)
         <hr class="solid mt-2" />
 
         @foreach (Reasons r in Model.Reasons)
         {
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="reason_@r.ReasonID" name="reason_@r.ReasonID" required>
-                <label class="form-check-label" for="reason_@r.ReasonID">@r.reason</label>
-            </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="fr_3_@r.ReasonID" name="fr_3_@r.ReasonID" required>
+        <label class="form-check-label" for="fr_3_@r.ReasonID">@r.reason</label>
+        <input type="checkbox" class="form-check-input gotcha" id="reason_@r.ReasonID" name="reason_@r.ReasonID">
+        <label class="form-check-label gotcha" for="reason_@r.ReasonID">@r.reason</label>
+    </div>
         }
         <br />
         <hr class="solid mt-0" />
         <div class="form-group mb-2">
-            <textarea class="form-control" id="message" name="message" rows="3" placeholder="Message" required maxlength="350"></textarea>
+            <textarea class="form-control" id="fm_4" name="fm_4" rows="3" placeholder="Message" required maxlength="350"></textarea>
+            <textarea class="form-control gotcha" id="message" name="message" rows="3" placeholder="Message" maxlength="350"></textarea>
         </div>
         <div class="g-recaptcha" data-sitekey="@Model.recapthcaSiteKey"></div>
                     @if (displayCaptchaErr)

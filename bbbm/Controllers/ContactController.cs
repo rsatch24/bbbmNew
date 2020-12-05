@@ -65,60 +65,85 @@ namespace bbbm.Controllers
             {
                 /*TURN ON WHEN REAL DEPLOYMENT*/
                 bool verifyRecaptcha = IsRecaptchaVerified(form);
+                bool isSpam = CheckIsSpam(form);
                 //bool verifyRecaptcha = true;
                 if (verifyRecaptcha)
                 {
-                    Contact c = new Contact()
+                    if (!isSpam)
                     {
-                        name = form["nameInput"].ToString(),
-                        email = form["EmailInput"].ToString(),
-                        message = form["message"].ToString(),
-                    };
+                        Contact c = new Contact()
+                        {
+                            name = form["fn_1"].ToString(),
+                            email = form["fe_2"].ToString(),
+                            message = form["fm_4"].ToString()
+                        };
 
-                    int contactID = _contactRepository.SaveContacts(c).Result;
+                        int contactID = _contactRepository.SaveContacts(c).Result;
 
-                    if (contactID != 0)
-                    {
-                        List<int> selectedReasons = fillContactReasons(form);
-                        _contactRepository.SaveContactReasons(contactID, selectedReasons);
-                        string emailBody = createEmailBody(c.name, c.email, c.message, selectedReasons);
-                        string emailSubject = createEmailSubject(c.name);
-                        _emailer.SendEmailAsync(emailSubject, emailBody);
+                        if (contactID != 0)
+                        {
+                            List<int> selectedReasons = fillContactReasons(form);
+                            _contactRepository.SaveContactReasons(contactID, selectedReasons);
+                            string emailBody = createEmailBody(c.name, c.email, c.message, selectedReasons);
+                            string emailSubject = createEmailSubject(c.name);
+                            _emailer.SendEmailAsync(emailSubject, emailBody);
+                        }
+
+                        ViewData.Add("success", true);
+                        ViewData.Add("IsValidCaptcha", true);
+                        ViewData.Add("initialPageLoad", false);
+                        return View("Index");
                     }
-                    
-                    ViewData.Add("success", true);
-                    ViewData.Add("IsValidCaptcha", true);
-                    ViewData.Add("initialPageLoad", false);
-                    return View("Index");
+                    else
+                    {
+                        Contact c = new Contact()
+                        {
+                            name = form["nameInput"].ToString(),
+                            email = form["EmailInput"].ToString(),
+                            message = form["message"].ToString(),
+                            isSpam = true
+                        };
+
+                         _contactRepository.SaveBotContacts(c);
+                        ViewData.Add("success", true);
+                        ViewData.Add("initialPageLoad", false);
+                        ViewData.Add("IsValidCaptcha", true);
+                        return View("Index", cm);
+                    }
                 }
                 else
                 {
+                    if(!isSpam)
+                    {
+                        cm = fillContactModel();
+                    }
                     ViewData.Add("success", false);
                     ViewData.Add("IsValidCaptcha", false);
                     ViewData.Add("initialPageLoad", false);
                     return View("Index", cm);
                 }
-                
+
             }
             catch
             {
                 ViewData.Add("success", false);
+                ViewData.Add("IsValidCaptcha", true);
                 ViewData.Add("initialPageLoad", false);
                 return View("Index", cm);
             }
         }
-           
+
         private List<int> fillContactReasons(IFormCollection form)
         {
             List<int> reasonsToAdd = new List<int>();
 
-            int initial = form["reason_1"].ToString() == "on" ? 1 : 0;
-            if(initial > 0)  reasonsToAdd.Add(initial);
+            int initial = form["fr_3_1"].ToString() == "on" ? 1 : 0;
+            if (initial > 0) reasonsToAdd.Add(initial);
 
-            int followUp = form["reason_2"].ToString() == "on" ? 2 : 0;
+            int followUp = form["fr_3_2"].ToString() == "on" ? 2 : 0;
             if (followUp > 0) reasonsToAdd.Add(followUp);
 
-            int consulting = form["reason_3"].ToString() == "on" ? 3 : 0;
+            int consulting = form["fr_3_3"].ToString() == "on" ? 3 : 0;
             if (consulting > 0) reasonsToAdd.Add(consulting);
 
             return reasonsToAdd;
@@ -127,7 +152,7 @@ namespace bbbm.Controllers
         private string createEmailBody(string name, string email, string message, List<int> reasons)
         {
             string concatReasons = "Reasons: <br />";
-            foreach(int c in reasons)
+            foreach (int c in reasons)
             {
                 string stringToAdd = "";
                 if (c == (int)DB_Reasons.Initial) { stringToAdd = "Nutrition - Initial Consultation"; }
@@ -148,7 +173,7 @@ namespace bbbm.Controllers
         private bool IsRecaptchaVerified(IFormCollection form)
         {
             const string urlToPost = "https://www.google.com/recaptcha/api/siteverify";
-            
+
             //const string secretKey = _recaptchaSecretKey;
             var captchaResponse = form["g-recaptcha-response"];
 
@@ -192,5 +217,21 @@ namespace bbbm.Controllers
 
             return JsonConvert.DeserializeObject<ReCaptchaResponse>(result);
         }
-    } 
+
+
+        private bool CheckIsSpam(IFormCollection form)
+        {
+            bool isSpam = false;
+            var Botname = form["nameInput"].ToString();
+            var Botemail = form["EmailInput"].ToString();
+            var Botmessage = form["message"].ToString();
+            var realMessage = form["fm_4"].ToString();
+            if(Botname != "" || Botemail != "" || Botmessage != "" || realMessage.Contains("<a") || realMessage.Contains("href"))
+            {
+                isSpam = true;
+            }
+
+            return isSpam;
+        }
+    }
 }
