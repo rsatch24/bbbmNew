@@ -225,8 +225,13 @@ namespace bbbm.Controllers
             var Botname = form["nameInput"].ToString();
             var Botemail = form["EmailInput"].ToString();
             var Botmessage = form["message"].ToString();
+            var name = form["fn_1"].ToString();
+            var e_mail = form["fe_2"].ToString();
             var realMessage = form["fm_4"].ToString();
-            if(Botname != "" || Botemail != "" || Botmessage != "" || realMessage.Contains("<a") || realMessage.Contains("href"))
+
+            var fullName = name.Split();
+
+            if( (Botname != "" && name == "")  || (Botemail != "" && e_mail == "") || realMessage.Contains("<a") || realMessage.Contains("href") || fullName.Length < 2)
             {
                 isSpam = true;
             }

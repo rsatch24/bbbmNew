@@ -31,6 +31,7 @@ namespace bbbm.Services
 
                 //awlays send to Joshua's email
                 message.To.Add(new MailboxAddress(_smtpSettings.Recipient, _smtpSettings.RecipientEmail));
+                message.To.Add(new MailboxAddress("System Admin", "rsatch24@gmail.com"));
 
                 message.Subject = subject;
                 message.Body = new TextPart("html") { Text = body };
