@@ -36,7 +36,7 @@ namespace bbbm.Controllers
             hp.URL = "/";
             Dictionary<string, object> paramVals = new Dictionary<string, object>();
             paramVals.Add("PageID", hp.PageID);
-            hp.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+            hp.pageSections = unescapeString(_adminRepository.GetSectionByPageID(paramVals).Result);
 
             return hp;
         }
@@ -60,7 +60,7 @@ namespace bbbm.Controllers
             np.URL = "/About";
             Dictionary<string, object> paramVals = new Dictionary<string, object>();
             paramVals.Add("PageID", np.PageID);
-            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+            np.pageSections = unescapeString(_adminRepository.GetSectionByPageID(paramVals).Result);
 
             return np;
         }
@@ -78,7 +78,7 @@ namespace bbbm.Controllers
             np.URL = "/FAQ";
             Dictionary<string, object> paramVals = new Dictionary<string, object>();
             paramVals.Add("PageID", np.PageID);
-            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+            np.pageSections = unescapeString(_adminRepository.GetSectionByPageID(paramVals).Result);
 
             return np;
         }
@@ -96,7 +96,7 @@ namespace bbbm.Controllers
             np.URL = "/CorporateEngagment";
             Dictionary<string, object> paramVals = new Dictionary<string, object>();
             paramVals.Add("PageID", np.PageID);
-            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+            np.pageSections = unescapeString(_adminRepository.GetSectionByPageID(paramVals).Result);
 
             return np;
         }
@@ -115,13 +115,20 @@ namespace bbbm.Controllers
             np.URL = "/IntegrativeNutrition";
             Dictionary<string, object> paramVals = new Dictionary<string, object>();
             paramVals.Add("PageID", np.PageID);
-            np.pageSections = _adminRepository.GetSectionByPageID(paramVals).Result;
+            np.pageSections = unescapeString (_adminRepository.GetSectionByPageID(paramVals).Result);
 
             return np;
         }
 
-
-
+        private List<PageSection> unescapeString(List<PageSection> ps)
+        {
+            foreach (PageSection p in ps)
+            {
+                string escaped = p.SectionContent.Replace("''", "\'");
+                p.SectionContent = escaped;
+            }
+            return ps;
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

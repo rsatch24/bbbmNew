@@ -103,7 +103,7 @@ namespace bbbm.Controllers
                 am.URL = "/";
                 Dictionary<string, object> paramVals = new Dictionary<string, object>();
                 paramVals.Add("PageID", am.PageID);
-                am.pageSections = _adminRepo.GetSectionByPageID(paramVals).Result;
+                am.pageSections =  unescapeString(_adminRepo.GetSectionByPageID(paramVals).Result);
                 return am;
             }
             else
@@ -112,7 +112,7 @@ namespace bbbm.Controllers
                 am.PageName = _pages.Where(w => w.PageID == (int)PageID).Select(s => s.PageName).FirstOrDefault();
                 Dictionary<string, object> paramVals = new Dictionary<string, object>();
                 paramVals.Add("PageID", am.PageID);
-                am.pageSections = _adminRepo.GetSectionByPageID(paramVals).Result;
+                am.pageSections = unescapeString(_adminRepo.GetSectionByPageID(paramVals).Result);
                 return am;
             }
 
@@ -126,7 +126,8 @@ namespace bbbm.Controllers
             {
                 IDictionary<string, object> valparams = new Dictionary<string, object>();
                 valparams.Add("SectionID", c.SectionID);
-                valparams.Add("SectionContent", c.SectionContent);
+                var escapedString = c.SectionContent.Replace("'", "''");
+                valparams.Add("SectionContent", escapedString);
                 await _adminRepo.UpdateSectionContent(valparams);
                 return Json("success");
             }
@@ -165,6 +166,16 @@ namespace bbbm.Controllers
             await _adminRepo.UpdateSectionImage(valparams);
 
             return RedirectToAction("LoadContent", "Admin", new { PageID = Convert.ToInt32(page)});
+        }
+
+        private List<PageSection> unescapeString(List<PageSection> ps)
+        {
+            foreach (PageSection p in ps)
+            {
+                string escaped = p.SectionContent.Replace("''", "\\'");
+                p.SectionContent = escaped;
+            }
+            return ps;
         }
     }
 }   
