@@ -4,6 +4,6 @@ namespace bbbm.Services
 {
     public interface IEMailer
     {
-        Task SendEmailAsync(string subject, string body);
+        Task SendEmailAsync(string subject, string body, int contactID);
     }
 }

@@ -86,7 +86,7 @@ namespace bbbm.Controllers
                             _contactRepository.SaveContactReasons(contactID, selectedReasons);
                             string emailBody = createEmailBody(c.name, c.email, c.message, selectedReasons);
                             string emailSubject = createEmailSubject(c.name);
-                            _emailer.SendEmailAsync(emailSubject, emailBody);
+                            _emailer.SendEmailAsync(emailSubject, emailBody, contactID);
                         }
 
                         ViewData.Add("success", true);
